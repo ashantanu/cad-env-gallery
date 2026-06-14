@@ -1,0 +1,433 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Qwen/Qwen3.5-2B:u1qskvackpnjqrdv50xvhyr7 — cad-env</title><style>
+body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 0;
+       background: #f6f7f9; color: #1a1a2e; }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 24px 20px 60px; }
+h1 { font-size: 26px; margin: 8px 0 4px; }
+h2 { font-size: 19px; margin: 36px 0 10px; }
+.sub { color: #555; font-size: 14px; margin-bottom: 8px; }
+a { color: #2563eb; text-decoration: none; }
+a:hover { text-decoration: underline; }
+table { border-collapse: collapse; width: 100%; background: #fff;
+        border: 1px solid #e2e4e8; border-radius: 8px; overflow: hidden;
+        font-size: 13.5px; }
+th, td { padding: 8px 12px; text-align: right; border-bottom: 1px solid #eef0f3; }
+th { background: #fafbfc; font-weight: 600; }
+th:first-child, td:first-child { text-align: left; }
+tr:last-child td { border-bottom: none; }
+.bar { display: inline-block; height: 9px; border-radius: 4px;
+       background: linear-gradient(90deg,#34d399,#10b981); vertical-align: middle; }
+.card { background: #fff; border: 1px solid #e2e4e8; border-radius: 8px;
+        padding: 12px 16px; margin-bottom: 14px; }
+.card h3 { margin: 0 0 4px; font-size: 13.5px; color: #555; font-weight: 600; }
+.card p { margin: 0 0 10px; font-size: 13px; }
+.row { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
+.tile { flex: 0 0 150px; text-align: center; }
+.tile img { width: 150px; height: 150px; border-radius: 5px; border: 3px solid #ccc;
+            background: #fff; }
+.tile.ref img { border-color: #2563eb; }
+.tile.good img { border-color: #16a34a; }
+.tile.mid img { border-color: #d97706; }
+.tile.bad img { border-color: #dc2626; }
+.noimg { width: 150px; height: 150px; border-radius: 5px; border: 3px dashed #dc2626;
+         display: flex; align-items: center; justify-content: center; font-size: 12px;
+         color: #dc2626; box-sizing: border-box; background: #fff; }
+.cap { font-size: 11px; color: #666; margin-top: 2px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 10px; }
+.gtile { background: #fff; border: 1px solid #e2e4e8; border-radius: 8px;
+         padding: 8px; text-align: center; }
+.gtile img { width: 100%; border-radius: 4px; }
+.gtile .cap { min-height: 28px; }
+.pill { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px;
+        background: #eef2ff; color: #4338ca; margin-left: 6px; }
+</style><div class="wrap"><p><a href="../index.html">&larr; leaderboard</a></p><h1>Qwen/Qwen3.5-2B:u1qskvackpnjqrdv50xvhyr7</h1><p class="sub">mean reward 0.621 · compile rate 100% · 120 valid rollouts. Blue = reference; green &ge; 0.9, orange &ge; 0.4, red below. Hover a tile for the generated OpenSCAD.</p><div class="card"><h3>L1 · example 0 · mean 0.75 · max 0.75</h3><p>A solid rectangular box 15mm wide, 15mm deep, and 35mm tall.</p><div class="row"><div class="tile ref"><img src="../img/49811f8b4df0.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/f256ff9f6d9d.png" loading="lazy" title="difference() {
+    cylinder(h=35, r=7.5, $fn=64);
+}"><div class="cap">reward 0.75</div></div><div class="tile mid"><img src="../img/f256ff9f6d9d.png" loading="lazy" title="difference() {
+    cylinder(h=35, r=7.5, $fn=64);
+}"><div class="cap">reward 0.75</div></div><div class="tile mid"><img src="../img/f256ff9f6d9d.png" loading="lazy" title="difference() {
+    cylinder(h=35, r=7.5, $fn=64);
+}"><div class="cap">reward 0.75</div></div><div class="tile mid"><img src="../img/f256ff9f6d9d.png" loading="lazy" title="difference() {
+    cylinder(h=35, r=7.5, $fn=64);
+}"><div class="cap">reward 0.75</div></div></div></div><div class="card"><h3>L2 · example 1 · mean 0.80 · max 0.80</h3><p>A solid hexagonal prism 35mm tall, 60mm across the flats, with two flats parallel to the x axis, with a 12mm-radius hole drilled vertically through the center of the entire part. The part sits on the z=0 plane, centered on the Z axis.</p><div class="row"><div class="tile ref"><img src="../img/9c1ee8c74a65.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/cf22169551aa.png" loading="lazy" title="difference() {
+    cylinder(h=35, r=30, $fn=64);
+    difference() {
+        cylinder(h=35, r=12, $fn=64);
+    };
+}"><div class="cap">reward 0.80</div></div><div class="tile mid"><img src="../img/0a8c5b98bbd9.png" loading="lazy" title="difference() {
+    cylinder(h=35, r=30, $fn=64);
+    cylinder(h=35, r=12, $fn=64);
+}"><div class="cap">reward 0.80</div></div><div class="tile mid"><img src="../img/0a8c5b98bbd9.png" loading="lazy" title="difference() {
+    cylinder(h=35, r=30, $fn=64);
+    cylinder(h=35, r=12, $fn=64);
+}"><div class="cap">reward 0.80</div></div><div class="tile mid"><img src="../img/0a8c5b98bbd9.png" loading="lazy" title="difference() {
+    cylinder(h=35, r=30, $fn=64);
+    cylinder(h=35, r=12, $fn=64);
+}"><div class="cap">reward 0.80</div></div></div></div><div class="card"><h3>L5 · example 2 · mean 0.47 · max 0.49</h3><p>Create a triangular prism standing 45mm tall: its base is a right triangle with legs of 20mm (along X) and 30mm (along Y) meeting at the origin.</p><div class="row"><div class="tile ref"><img src="../img/6c1686b0b7bc.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/dc01a3bb50ed.png" loading="lazy" title="difference() {
+    cylinder(h=45, r=15, $fn=64);
+}"><div class="cap">reward 0.49</div></div><div class="tile mid"><img src="../img/dc01a3bb50ed.png" loading="lazy" title="difference() {
+    cylinder(h=45, r=15, $fn=64);
+}"><div class="cap">reward 0.49</div></div><div class="tile mid"><img src="../img/dc01a3bb50ed.png" loading="lazy" title="difference() {
+    cylinder(h=45, r=15, $fn=64);
+}"><div class="cap">reward 0.49</div></div><div class="tile mid"><img src="../img/ec1d05a4296a.png" loading="lazy" title="difference() {
+    cylinder(h=45, r=30, $fn=64);
+}"><div class="cap">reward 0.40</div></div></div></div><div class="card"><h3>L4 · example 3 · mean 0.53 · max 0.53</h3><p>A solid hexagonal prism 50mm tall, 40mm across the flats, with two flats parallel to the x axis, with a 3mm-radius hole drilled vertically through the center of the entire part; and a cone of base radius 12mm and height 20mm standing centered on its top face, apex up. The part sits on the z=0 plane, centered on the Z axis.</p><div class="row"><div class="tile ref"><img src="../img/2f69fabbadc6.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/76b978548f88.png" loading="lazy" title="difference() {
+    cylinder(h=50, r=25, $fn=64);
+    difference() {
+        cylinder(h=20, r=12, $fn=64);
+    };
+}"><div class="cap">reward 0.53</div></div><div class="tile mid"><img src="../img/c4783dbd3fea.png" loading="lazy" title="difference() {
+    cylinder(h=50, r=25, $fn=64);
+    cylinder(h=20, r=12, $fn=64);
+}"><div class="cap">reward 0.53</div></div><div class="tile mid"><img src="../img/76b978548f88.png" loading="lazy" title="difference() {
+    cylinder(h=50, r=25, $fn=64);
+    difference() {
+        cylinder(h=20, r=12, $fn=64);
+    };
+}"><div class="cap">reward 0.53</div></div><div class="tile mid"><img src="../img/c4783dbd3fea.png" loading="lazy" title="difference() {
+    cylinder(h=50, r=25, $fn=64);
+    cylinder(h=20, r=12, $fn=64);
+}"><div class="cap">reward 0.53</div></div></div></div><div class="card"><h3>L1 · example 4 · mean 1.00 · max 1.00</h3><p>A solid cylinder 25mm tall with a radius of 20mm, standing upright.</p><div class="row"><div class="tile ref"><img src="../img/8c186885def2.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/c993e7b371df.png" loading="lazy" title="difference() {
+    cylinder(h=25, r=20, $fn=64);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/c993e7b371df.png" loading="lazy" title="difference() {
+    cylinder(h=25, r=20, $fn=64);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/c993e7b371df.png" loading="lazy" title="difference() {
+    cylinder(h=25, r=20, $fn=64);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/c993e7b371df.png" loading="lazy" title="difference() {
+    cylinder(h=25, r=20, $fn=64);
+}"><div class="cap">reward 1.00</div></div></div></div><div class="card"><h3>L5 · example 5 · mean 0.42 · max 0.47</h3><p>Create a triangular prism standing 25mm tall: its base is a right triangle with legs of 45mm (along X) and 30mm (along Y) meeting at the origin.</p><div class="row"><div class="tile ref"><img src="../img/f93fcbf7a554.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/12fcf76534fb.png" loading="lazy" title="difference() {
+    cylinder(h=25, r=22.5, $fn=64);
+}"><div class="cap">reward 0.47</div></div><div class="tile mid"><img src="../img/f861e220177b.png" loading="lazy" title="difference() {
+    cylinder(h=25, r=45, $fn=64);
+    translate([22.5,15,-25]);
+}"><div class="cap">reward 0.40</div></div><div class="tile mid"><img src="../img/8c42a9c7a331.png" loading="lazy" title="difference() {
+    cylinder(h=25, r=40, $fn=64);
+    difference() {
+        cylinder(h=25, r=30, $fn=64);
+    };
+}"><div class="cap">reward 0.40</div></div><div class="tile mid"><img src="../img/7924a55eca91.png" loading="lazy" title="difference() {
+    cylinder(h=25, r=45, $fn=64);
+    cylinder(h=25, r=30, $fn=64);
+}"><div class="cap">reward 0.40</div></div></div></div><div class="card"><h3>L3 · example 6 · mean 0.71 · max 0.73</h3><p>A solid hexagonal prism 25mm tall, 50mm across the flats, with two flats parallel to the x axis, with 4 holes of radius 2mm drilled vertically through it, evenly spaced on a circle of radius 18.1mm around the center, the first hole on the +X axis; and a 8mm-radius hole drilled vertically through the center of the entire part. The part sits on the z=0 plane, centered on the Z axis.</p><div class="row"><div class="tile ref"><img src="../img/bc790c7f6382.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/abe91a7742a4.png" loading="lazy" title="difference() {
+    cylinder(h=25, r=25, $fn=64);
+    difference() {
+        cylinder(h=25, r=2, $fn=64);
+    };
+}"><div class="cap">reward 0.73</div></div><div class="tile mid"><img src="../img/abe91a7742a4.png" loading="lazy" title="difference() {
+    cylinder(h=25, r=25, $fn=64);
+    difference() {
+        cylinder(h=25, r=2, $fn=64);
+    };
+}"><div class="cap">reward 0.73</div></div><div class="tile mid"><img src="../img/3bb6017f4eee.png" loading="lazy" title="difference() {
+    cylinder(h=25, r=25, $fn=64);
+}"><div class="cap">reward 0.73</div></div><div class="tile mid"><img src="../img/df4855aaf739.png" loading="lazy" title="difference() {
+    cylinder(h=25, r=25, $fn=64);
+    cylinder(h=25, r=4, $fn=64);
+    cylinder(h=25, r=18.1, $fn=64);
+}"><div class="cap">reward 0.65</div></div></div></div><div class="card"><h3>L4 · example 7 · mean 0.45 · max 0.49</h3><p>A solid hexagonal prism 50mm tall, 35mm across the flats, with two flats parallel to the x axis, with hollowed out from the top into an open container with 5mm thick walls and floor. The part sits on the z=0 plane, centered on the Z axis.</p><div class="row"><div class="tile ref"><img src="../img/2d27993a9d46.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/e43baa188a50.png" loading="lazy" title="difference() {
+    cylinder(h=50, r=25, $fn=64);
+    cylinder(h=50, r=10, $fn=64);
+}"><div class="cap">reward 0.49</div></div><div class="tile mid"><img src="../img/64dd9448dbf0.png" loading="lazy" title="difference() {
+    cylinder(h=50, r=32.5, $fn=64);
+    difference() {
+        cylinder(h=50, r=20, $fn=64);
+    };
+}"><div class="cap">reward 0.44</div></div><div class="tile mid"><img src="../img/bdf9942c6446.png" loading="lazy" title="difference() {
+    cylinder(h=50, r=27.5, $fn=64);
+}"><div class="cap">reward 0.43</div></div><div class="tile mid"><img src="../img/754c0b7c4a2d.png" loading="lazy" title="difference() {
+    cylinder(h=50, r=30, $fn=64);
+    difference() {
+        cylinder(h=50, r=4, $fn=64);
+    };
+}"><div class="cap">reward 0.42</div></div></div></div><div class="card"><h3>L5 · example 8 · mean 0.57 · max 0.62</h3><p>Create a 35mm-tall prism shaped like a plus sign, formed by two perpendicular 60mm x 20mm bars crossing at their midpoints.</p><div class="row"><div class="tile ref"><img src="../img/7e33355936b7.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/e4f2f6e57849.png" loading="lazy" title="difference() {
+    cylinder(h=35, r=30, $fn=64);
+}"><div class="cap">reward 0.62</div></div><div class="tile mid"><img src="../img/33b8324ea172.png" loading="lazy" title="difference() {
+    cylinder(h=35, r=30, $fn=64);
+    cylinder(h=35, r=10, $fn=64);
+}"><div class="cap">reward 0.61</div></div><div class="tile mid"><img src="../img/33b8324ea172.png" loading="lazy" title="difference() {
+    cylinder(h=35, r=30, $fn=64);
+    cylinder(h=35, r=10, $fn=64);
+}"><div class="cap">reward 0.61</div></div><div class="tile mid"><img src="../img/5768f9a467cc.png" loading="lazy" title="difference() {
+    cylinder(h=35, r=15, $fn=64);
+    difference() {
+        cylinder(h=35, r=30, $fn=64);
+        difference() {
+            cylinder(h=35, r=7, $fn=64);
+        };
+    };
+}"><div class="cap">reward 0.42</div></div></div></div><div class="card"><h3>L2 · example 9 · mean 0.59 · max 0.61</h3><p>An open-top rectangular container with outer dimensions 55mm x 70mm x 55mm, wall and floor thickness 5mm.</p><div class="row"><div class="tile ref"><img src="../img/b525ff7bd5be.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/2fd7ca6856ff.png" loading="lazy" title="difference() {
+    cylinder(h=55, r=32.5, $fn=64);
+    difference() {
+        cylinder(h=55, r=27.5, $fn=64);
+    };
+}"><div class="cap">reward 0.61</div></div><div class="tile mid"><img src="../img/afae8c3d3632.png" loading="lazy" title="difference() {
+    cylinder(h=55, r=32.5, $fn=64);
+    difference() {
+        cylinder(h=55, r=30, $fn=64);
+    };
+}"><div class="cap">reward 0.60</div></div><div class="tile mid"><img src="../img/60c6507be627.png" loading="lazy" title="difference() {
+    cylinder(h=55, r=30, $fn=64);
+    difference() {
+        cylinder(h=55, r=25, $fn=64);
+    };
+}"><div class="cap">reward 0.58</div></div><div class="tile mid"><img src="../img/60c6507be627.png" loading="lazy" title="difference() {
+    cylinder(h=55, r=30, $fn=64);
+    difference() {
+        cylinder(h=55, r=25, $fn=64);
+    };
+}"><div class="cap">reward 0.58</div></div></div></div><div class="card"><h3>L3 · example 10 · mean 0.59 · max 0.62</h3><p>A stepped circular shaft standing upright, made of 2 stacked coaxial cylinders from bottom to top: a section of radius 35mm and height 25mm, then a section of radius 20mm and height 20mm. Each section is narrower than the one below it.</p><div class="row"><div class="tile ref"><img src="../img/51ca79a364e4.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/35d291bcc981.png" loading="lazy" title="difference() {
+    cylinder(h=45, r=35, $fn=64);
+    difference() {
+        cylinder(h=45, r=20, $fn=64);
+    };
+}"><div class="cap">reward 0.62</div></div><div class="tile mid"><img src="../img/d46801114bf8.png" loading="lazy" title="difference() {
+    cylinder(h=45, r=35, $fn=64);
+    cylinder(h=20, r=20, $fn=64);
+}"><div class="cap">reward 0.58</div></div><div class="tile mid"><img src="../img/d46801114bf8.png" loading="lazy" title="difference() {
+    cylinder(h=45, r=35, $fn=64);
+    cylinder(h=20, r=20, $fn=64);
+}"><div class="cap">reward 0.58</div></div><div class="tile mid"><img src="../img/d46801114bf8.png" loading="lazy" title="difference() {
+    cylinder(h=45, r=35, $fn=64);
+    cylinder(h=20, r=20, $fn=64);
+}"><div class="cap">reward 0.58</div></div></div></div><div class="card"><h3>L5 · example 11 · mean 0.66 · max 0.69</h3><p>A flat rectangular plate 90mm x 50mm and 11mm thick, with a rounded slot cut all the way through its center: the slot is 64mm long along the X direction and 12mm wide, with semicircular ends.</p><div class="row"><div class="tile ref"><img src="../img/d8c7279d9e38.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/ba609dfa9b33.png" loading="lazy" title="difference() {
+    cylinder(h=11, r=45, $fn=64);
+}"><div class="cap">reward 0.69</div></div><div class="tile mid"><img src="../img/ba609dfa9b33.png" loading="lazy" title="difference() {
+    cylinder(h=11, r=45, $fn=64);
+}"><div class="cap">reward 0.69</div></div><div class="tile mid"><img src="../img/f40031a03eb7.png" loading="lazy" title="difference() {
+    cylinder(h=11, r=45, $fn=64);
+    difference() {
+        cylinder(h=11, r=16, $fn=64);
+    };
+}"><div class="cap">reward 0.68</div></div><div class="tile mid"><img src="../img/5027cbe04996.png" loading="lazy" title="difference() {
+    cylinder(h=11, r=45, $fn=64);
+    difference() {
+        cylinder(h=11, r=32, $fn=64);
+    };
+}"><div class="cap">reward 0.56</div></div></div></div><div class="card"><h3>L1 · example 12 · mean 0.46 · max 0.46</h3><p>A solid rectangular box 10mm wide, 55mm deep, and 60mm tall.</p><div class="row"><div class="tile ref"><img src="../img/8a853e58f10d.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/020d20c9115e.png" loading="lazy" title="difference() {
+    cylinder(h=60, r=5, $fn=64);
+}"><div class="cap">reward 0.46</div></div><div class="tile mid"><img src="../img/020d20c9115e.png" loading="lazy" title="difference() {
+    cylinder(h=60, r=5, $fn=64);
+}"><div class="cap">reward 0.46</div></div><div class="tile mid"><img src="../img/020d20c9115e.png" loading="lazy" title="difference() {
+    cylinder(h=60, r=5, $fn=64);
+}"><div class="cap">reward 0.46</div></div><div class="tile mid"><img src="../img/020d20c9115e.png" loading="lazy" title="difference() {
+    cylinder(h=60, r=5, $fn=64);
+}"><div class="cap">reward 0.46</div></div></div></div><div class="card"><h3>L2 · example 13 · mean 0.57 · max 0.58</h3><p>A solid box 45mm x 25mm x 60mm with a rectangular notch 10mm wide and 13mm deep cut into the middle of its top face, running through the full depth of the box.</p><div class="row"><div class="tile ref"><img src="../img/807576ed580d.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/41176927d5b3.png" loading="lazy" title="difference() {
+    cylinder(h=60, r=22.5, $fn=64);
+    difference() {
+        cylinder(h=60, r=6, $fn=64);
+    };
+}"><div class="cap">reward 0.58</div></div><div class="tile mid"><img src="../img/6d4a4a02006d.png" loading="lazy" title="difference() {
+    cylinder(h=60, r=22.5, $fn=64);
+    difference() {
+        cylinder(h=60, r=5, $fn=64);
+    };
+}"><div class="cap">reward 0.58</div></div><div class="tile mid"><img src="../img/b99736f0a0e8.png" loading="lazy" title="difference() {
+    cylinder(h=60, r=22.5, $fn=64);
+}"><div class="cap">reward 0.57</div></div><div class="tile mid"><img src="../img/7e8c9f0e7494.png" loading="lazy" title="difference() {
+    cylinder(h=60, r=23, $fn=64);
+}"><div class="cap">reward 0.56</div></div></div></div><div class="card"><h3>L5 · example 14 · mean 0.42 · max 0.49</h3><p>A vertical prism 45mm tall whose footprint is a right triangle with one leg 35mm along the X axis and the other leg 20mm along the Y axis, right angle at the origin.</p><div class="row"><div class="tile ref"><img src="../img/22ce955cece2.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/4c3f88c16953.png" loading="lazy" title="difference() {
+    cylinder(h=45, r=35/2, $fn=64);
+    difference() {
+        cylinder(h=45, r=20/2, $fn=64);
+    };
+}"><div class="cap">reward 0.49</div></div><div class="tile mid"><img src="../img/ec1d05a4296a.png" loading="lazy" title="difference() {
+    cylinder(h=45, r=30, $fn=64);
+}"><div class="cap">reward 0.40</div></div><div class="tile mid"><img src="../img/35d291bcc981.png" loading="lazy" title="difference() {
+    cylinder(h=45, r=35, $fn=64);
+    difference() {
+        cylinder(h=45, r=20, $fn=64);
+    };
+}"><div class="cap">reward 0.40</div></div><div class="tile mid"><img src="../img/90e8b5627f6c.png" loading="lazy" title="difference() {
+    cylinder(h=45, r=32.5, $fn=64);
+}"><div class="cap">reward 0.40</div></div></div></div><div class="card"><h3>L4 · example 15 · mean 0.80 · max 0.80</h3><p>A hexagonal prism (like a nut) 18mm tall, measuring 30mm across the flats, with a circular hole of radius 5mm drilled through its center along the axis.</p><div class="row"><div class="tile ref"><img src="../img/bb0a3119dc16.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/234274f8f955.png" loading="lazy" title="difference() {
+    cylinder(h=18, r=15, $fn=64);
+    difference() {
+        cylinder(h=18, r=5, $fn=64);
+    };
+}"><div class="cap">reward 0.80</div></div><div class="tile mid"><img src="../img/234274f8f955.png" loading="lazy" title="difference() {
+    cylinder(h=18, r=15, $fn=64);
+    difference() {
+        cylinder(h=18, r=5, $fn=64);
+    };
+}"><div class="cap">reward 0.80</div></div><div class="tile mid"><img src="../img/f8c05c14a79d.png" loading="lazy" title="difference() {
+    cylinder(h=18, r=15, $fn=64);
+    cylinder(h=18, r=5, $fn=64);
+}"><div class="cap">reward 0.80</div></div><div class="tile mid"><img src="../img/234274f8f955.png" loading="lazy" title="difference() {
+    cylinder(h=18, r=15, $fn=64);
+    difference() {
+        cylinder(h=18, r=5, $fn=64);
+    };
+}"><div class="cap">reward 0.80</div></div></div></div><div class="card"><h3>L1 · example 16 · mean 0.42 · max 0.42</h3><p>A solid cylinder 60mm tall with a radius of 5mm, standing upright.</p><div class="row"><div class="tile ref"><img src="../img/ef7e4665720f.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/9922dbc528a4.png" loading="lazy" title="difference() {
+    cylinder(h=60, r=30, $fn=64);
+    cylinder(h=60, r=5, $fn=64);
+}"><div class="cap">reward 0.42</div></div><div class="tile mid"><img src="../img/9922dbc528a4.png" loading="lazy" title="difference() {
+    cylinder(h=60, r=30, $fn=64);
+    cylinder(h=60, r=5, $fn=64);
+}"><div class="cap">reward 0.42</div></div><div class="tile mid"><img src="../img/9922dbc528a4.png" loading="lazy" title="difference() {
+    cylinder(h=60, r=30, $fn=64);
+    cylinder(h=60, r=5, $fn=64);
+}"><div class="cap">reward 0.42</div></div><div class="tile mid"><img src="../img/9068b7ed0259.png" loading="lazy" title="difference() {
+    cylinder(h=60, r=30, $fn=64);
+    difference() {
+        cylinder(h=60, r=5, $fn=64);
+    };
+}"><div class="cap">reward 0.42</div></div></div></div><div class="card"><h3>L5 · example 17 · mean 0.51 · max 0.54</h3><p>A solid torus (donut shape) lying flat on the table: the ring&#x27;s centerline circle has a radius of 15mm and the circular tube cross-section has a radius of 5mm.</p><div class="row"><div class="tile ref"><img src="../img/4b423441fc9b.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/01de0402add9.png" loading="lazy" title="difference() {
+    cylinder(h=5, r=15, $fn=64);
+    cylinder(h=5, r=5, $fn=64);
+}"><div class="cap">reward 0.54</div></div><div class="tile mid"><img src="../img/9bb12c789130.png" loading="lazy" title="difference() {
+    cylinder(h=1.5, r=15, $fn=64);
+    cylinder(h=1.5, r=5, $fn=64);
+}"><div class="cap">reward 0.51</div></div><div class="tile mid"><img src="../img/a59ee4a9cb46.png" loading="lazy" title="difference() {
+    cylinder(h=2, r=15, $fn=64);
+}"><div class="cap">reward 0.51</div></div><div class="tile mid"><img src="../img/7a84e73f18f1.png" loading="lazy" title="difference() {
+    cylinder(h=20, r=15, $fn=64);
+    cylinder(h=20, r=5, $fn=64);
+}"><div class="cap">reward 0.49</div></div></div></div><div class="card"><h3>L3 · example 18 · mean 0.63 · max 0.66</h3><p>A solid box 55mm wide (x), 50mm deep (y), and 25mm tall, with 3 holes of radius 2mm drilled vertically through it, evenly spaced on a circle of radius 18.1mm around the center, the first hole on the +X axis; and a horizontal hole of radius 3mm drilled along the X axis through the whole part at half its height, centered in Y. The part sits on the z=0 plane, centered on the Z axis.</p><div class="row"><div class="tile ref"><img src="../img/ef9525ac2ff3.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/c36ec2f3b87c.png" loading="lazy" title="difference() {
+    cylinder(h=26, r=28, $fn=64);
+    cylinder(h=13, r=3, $fn=64);
+}"><div class="cap">reward 0.66</div></div><div class="tile mid"><img src="../img/31a6616fde89.png" loading="lazy" title="difference() {
+    cylinder(h=26, r=28, $fn=64);
+    difference() {
+        cylinder(h=24, r=3, $fn=64);
+    };
+}"><div class="cap">reward 0.66</div></div><div class="tile mid"><img src="../img/c64f1f59d408.png" loading="lazy" title="difference() {
+    cylinder(h=26, $fn=64, r=27.75);
+    cylinder(h=26, $fn=64, r=2, $z=13);
+    cylinder(h=25, $fn=64, r=3, $z=13);
+}"><div class="cap">reward 0.66</div></div><div class="tile mid"><img src="../img/2b06a2731d24.png" loading="lazy" title="difference() {
+    cylinder(h=26, r=27.75, $fn=64);
+    difference() {
+        cylinder(h=25, r=2, $fn=64);
+        difference() {
+            cylinder(h=22.5, r=3, $fn=64);
+        };
+    };
+}"><div class="cap">reward 0.55</div></div></div></div><div class="card"><h3>L4 · example 19 · mean 0.85 · max 0.86</h3><p>A gear-like disc 6mm thick with radius 25mm, with 6 rectangular teeth evenly spaced around its rim. Each tooth is 5mm wide and extends 6mm radially outward from the rim, spanning the full thickness of the disc.</p><div class="row"><div class="tile ref"><img src="../img/538e0aa871be.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/84ed1f8488fd.png" loading="lazy" title="difference() {
+    cylinder(h=6, r=25, $fn=64);
+}"><div class="cap">reward 0.86</div></div><div class="tile mid"><img src="../img/84ed1f8488fd.png" loading="lazy" title="difference() {
+    cylinder(h=6, r=25, $fn=64);
+}"><div class="cap">reward 0.86</div></div><div class="tile mid"><img src="../img/84ed1f8488fd.png" loading="lazy" title="difference() {
+    cylinder(h=6, r=25, $fn=64);
+}"><div class="cap">reward 0.86</div></div><div class="tile mid"><img src="../img/23cea0c78956.png" loading="lazy" title="difference() {
+    cylinder(h=7, r=26, $fn=64);
+}"><div class="cap">reward 0.83</div></div></div></div><div class="card"><h3>L5 · example 20 · mean 0.74 · max 0.74</h3><p>A flat rectangular plate 75mm x 45mm and 5mm thick, with a rounded slot cut all the way through its center: the slot is 46mm long along the X direction and 12mm wide, with semicircular ends.</p><div class="row"><div class="tile ref"><img src="../img/bed75c245e34.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/f918938e6bab.png" loading="lazy" title="difference() {
+    cylinder(h=5, r=37.5, $fn=64);
+}"><div class="cap">reward 0.74</div></div><div class="tile mid"><img src="../img/7558e04b1ba9.png" loading="lazy" title="difference() {
+    cylinder(h=5, r=38, $fn=64);
+}"><div class="cap">reward 0.74</div></div><div class="tile mid"><img src="../img/7558e04b1ba9.png" loading="lazy" title="difference() {
+    cylinder(h=5, r=38, $fn=64);
+}"><div class="cap">reward 0.74</div></div><div class="tile mid"><img src="../img/58b7cb134f59.png" loading="lazy" title="difference() {
+    cylinder(h=5, r=37.5, $fn=64);
+    difference() {
+        cylinder(h=5, r=11, $fn=64);
+    };
+}"><div class="cap">reward 0.74</div></div></div></div><div class="card"><h3>L2 · example 21 · mean 0.47 · max 0.52</h3><p>A solid box 60mm x 30mm x 55mm with a rectangular notch 14mm wide and 7mm deep cut into the middle of its top face, running through the full depth of the box.</p><div class="row"><div class="tile ref"><img src="../img/39eafbf9b0bb.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/57a33adf84ea.png" loading="lazy" title="difference() {
+    cylinder(h=55, r=30, $fn=64);
+    difference() {
+        cylinder(h=55, r=7, $fn=64);
+    };
+}"><div class="cap">reward 0.52</div></div><div class="tile mid"><img src="../img/c12ed2e8802e.png" loading="lazy" title="difference() {
+    cylinder(h=55, r=30, $fn=64);
+}"><div class="cap">reward 0.51</div></div><div class="tile mid"><img src="../img/8692cfae4a23.png" loading="lazy" title="difference() {
+    cylinder(h=55, r=40, $fn=64);
+    difference() {
+        cylinder(h=55, r=14, $fn=64);
+    };
+}"><div class="cap">reward 0.44</div></div><div class="tile mid"><img src="../img/a3e493534001.png" loading="lazy" title="difference() {
+    cylinder(h=55, r=30, $fn=64);
+    difference() {
+        cylinder(h=55, r=30, $fn=64);
+        difference() {
+            cylinder(h=55, r=7, $fn=64);
+        };
+    };
+}"><div class="cap">reward 0.41</div></div></div></div><div class="card"><h3>L3 · example 22 · mean 0.61 · max 0.61</h3><p>A solid hexagonal prism 20mm tall, 40mm across the flats, with two flats parallel to the x axis, with a hemispherical dome of radius 7mm centered on its top face; and 4 holes of radius 2mm drilled vertically through it, evenly spaced on a circle of radius 13.1mm around the center, the first hole on the +X axis. The part sits on the z=0 plane, centered on the Z axis.</p><div class="row"><div class="tile ref"><img src="../img/173ed91aa23f.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/3c63eba2e1f4.png" loading="lazy" title="difference() {
+    cylinder(h=20, r=20, $fn=64);
+}"><div class="cap">reward 0.61</div></div><div class="tile mid"><img src="../img/3c63eba2e1f4.png" loading="lazy" title="difference() {
+    cylinder(h=20, r=20, $fn=64);
+}"><div class="cap">reward 0.61</div></div><div class="tile mid"><img src="../img/3c63eba2e1f4.png" loading="lazy" title="difference() {
+    cylinder(h=20, r=20, $fn=64);
+}"><div class="cap">reward 0.61</div></div><div class="tile mid"><img src="../img/295608e284a8.png" loading="lazy" title="difference() {
+    cylinder(h=20, r=20, $fn=64);
+    cylinder(h=20, r=7, $fn=64);
+}"><div class="cap">reward 0.60</div></div></div></div><div class="card"><h3>L5 · example 23 · mean 0.53 · max 0.61</h3><p>Create a D-shaft: a 50mm-tall cylinder of radius 20mm whose +X side is sliced off by a vertical plane 13mm from the axis, leaving a flat running the full height.</p><div class="row"><div class="tile ref"><img src="../img/77d3c55772fd.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/673e1e14c88b.png" loading="lazy" title="difference() {
+    cylinder(h=50, r=20, $fn=64);
+    difference() {
+        cylinder(h=50, r=13, $fn=64);
+    };
+}"><div class="cap">reward 0.61</div></div><div class="tile mid"><img src="../img/3a735f8ffc94.png" loading="lazy" title="difference() {
+    cylinder(h=50, r=25, $fn=64);
+    difference() {
+        cylinder(h=50, r=13, $fn=64);
+    };
+}"><div class="cap">reward 0.50</div></div><div class="tile mid"><img src="../img/3a735f8ffc94.png" loading="lazy" title="difference() {
+    cylinder(h=50, r=25, $fn=64);
+    difference() {
+        cylinder(h=50, r=13, $fn=64);
+    };
+}"><div class="cap">reward 0.50</div></div><div class="tile mid"><img src="../img/f21d8f24e324.png" loading="lazy" title="difference() {
+    cylinder(h=50, r=25, $fn=64);
+}"><div class="cap">reward 0.50</div></div></div></div><div class="card"><h3>L1 · example 24 · mean 0.72 · max 0.72</h3><p>A solid rectangular box 65mm wide, 50mm deep, and 20mm tall.</p><div class="row"><div class="tile ref"><img src="../img/ce1b3b7ff393.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/0dc39c3f6411.png" loading="lazy" title="difference() {
+    cylinder(h=20, r=32.5, $fn=64);
+}"><div class="cap">reward 0.72</div></div><div class="tile mid"><img src="../img/0dc39c3f6411.png" loading="lazy" title="difference() {
+    cylinder(h=20, r=32.5, $fn=64);
+}"><div class="cap">reward 0.72</div></div><div class="tile mid"><img src="../img/0dc39c3f6411.png" loading="lazy" title="difference() {
+    cylinder(h=20, r=32.5, $fn=64);
+}"><div class="cap">reward 0.72</div></div><div class="tile mid"><img src="../img/0dc39c3f6411.png" loading="lazy" title="difference() {
+    cylinder(h=20, r=32.5, $fn=64);
+}"><div class="cap">reward 0.72</div></div></div></div><div class="card"><h3>L2 · example 25 · mean 0.58 · max 0.58</h3><p>A solid box 30mm x 30mm x 30mm with a rectangular notch 10mm wide and 5mm deep cut into the middle of its top face, running through the full depth of the box.</p><div class="row"><div class="tile ref"><img src="../img/2e475c7c9c6f.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/bc51dbef6000.png" loading="lazy" title="difference() {
+    cylinder(h=30, r=15, $fn=64);
+}"><div class="cap">reward 0.58</div></div><div class="tile mid"><img src="../img/bc51dbef6000.png" loading="lazy" title="difference() {
+    cylinder(h=30, r=15, $fn=64);
+}"><div class="cap">reward 0.58</div></div><div class="tile mid"><img src="../img/bc51dbef6000.png" loading="lazy" title="difference() {
+    cylinder(h=30, r=15, $fn=64);
+}"><div class="cap">reward 0.58</div></div><div class="tile mid"><img src="../img/bc51dbef6000.png" loading="lazy" title="difference() {
+    cylinder(h=30, r=15, $fn=64);
+}"><div class="cap">reward 0.58</div></div></div></div><div class="card"><h3>L5 · example 26 · mean 0.71 · max 0.71</h3><p>Create a 65x45x15mm block with a centered vertical through-hole of radius 5mm, counterbored from the top face to radius 9mm over a depth of 9mm.</p><div class="row"><div class="tile ref"><img src="../img/c40b1e8a1f90.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/5c2b2f33ed02.png" loading="lazy" title="difference() {
+    cylinder(h=15, r=32.5, $fn=64);
+    difference() {
+        cylinder(h=9, r=9, $fn=64);
+    };
+}"><div class="cap">reward 0.71</div></div><div class="tile mid"><img src="../img/5c2b2f33ed02.png" loading="lazy" title="difference() {
+    cylinder(h=15, r=32.5, $fn=64);
+    difference() {
+        cylinder(h=9, r=9, $fn=64);
+    };
+}"><div class="cap">reward 0.71</div></div><div class="tile mid"><img src="../img/2ba61a06e4a4.png" loading="lazy" title="difference() {
+    cylinder(h=15, r=32.5, $fn=64);
+    cylinder(h=9, r=9, $fn=64);
+}"><div class="cap">reward 0.71</div></div><div class="tile mid"><img src="../img/2ba61a06e4a4.png" loading="lazy" title="difference() {
+    cylinder(h=15, r=32.5, $fn=64);
+    cylinder(h=9, r=9, $fn=64);
+}"><div class="cap">reward 0.71</div></div></div></div><div class="card"><h3>L4 · example 27 · mean 0.83 · max 0.83</h3><p>A hexagonal prism (like a nut) 10mm tall, measuring 30mm across the flats, with a circular hole of radius 5mm drilled through its center along the axis.</p><div class="row"><div class="tile ref"><img src="../img/89fecd4a537f.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/bfbe817f2225.png" loading="lazy" title="difference() {
+    cylinder(h=10, r=15, $fn=64);
+    cylinder(h=10, r=5, $fn=64);
+}"><div class="cap">reward 0.83</div></div><div class="tile mid"><img src="../img/340d833adc93.png" loading="lazy" title="difference() {
+    cylinder(h=10, r=15, $fn=64);
+    difference() {
+        cylinder(h=10, r=5, $fn=64);
+    };
+}"><div class="cap">reward 0.83</div></div><div class="tile mid"><img src="../img/bfbe817f2225.png" loading="lazy" title="difference() {
+    cylinder(h=10, r=15, $fn=64);
+    cylinder(h=10, r=5, $fn=64);
+}"><div class="cap">reward 0.83</div></div><div class="tile mid"><img src="../img/340d833adc93.png" loading="lazy" title="difference() {
+    cylinder(h=10, r=15, $fn=64);
+    difference() {
+        cylinder(h=10, r=5, $fn=64);
+    };
+}"><div class="cap">reward 0.83</div></div></div></div><div class="card"><h3>L1 · example 28 · mean 0.66 · max 0.66</h3><p>A solid rectangular box 40mm wide, 40mm deep, and 20mm tall.</p><div class="row"><div class="tile ref"><img src="../img/3387029d3105.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/3c63eba2e1f4.png" loading="lazy" title="difference() {
+    cylinder(h=20, r=20, $fn=64);
+}"><div class="cap">reward 0.66</div></div><div class="tile mid"><img src="../img/3c63eba2e1f4.png" loading="lazy" title="difference() {
+    cylinder(h=20, r=20, $fn=64);
+}"><div class="cap">reward 0.66</div></div><div class="tile mid"><img src="../img/3c63eba2e1f4.png" loading="lazy" title="difference() {
+    cylinder(h=20, r=20, $fn=64);
+}"><div class="cap">reward 0.66</div></div><div class="tile mid"><img src="../img/3c63eba2e1f4.png" loading="lazy" title="difference() {
+    cylinder(h=20, r=20, $fn=64);
+}"><div class="cap">reward 0.66</div></div></div></div><div class="card"><h3>L5 · example 29 · mean 0.59 · max 0.60</h3><p>A plus-sign-shaped prism 15mm tall: two rectangular bars, each 65mm long and 10mm wide, cross at right angles at their centers (one along X, one along Y), centered on the Z axis.</p><div class="row"><div class="tile ref"><img src="../img/cdbbc84ee8c1.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/0183c526cebd.png" loading="lazy" title="difference() {
+    cylinder(h=15, r=30, $fn=64);
+}"><div class="cap">reward 0.60</div></div><div class="tile mid"><img src="../img/e4af2dd4ab09.png" loading="lazy" title="difference() {
+    cylinder(h=15, r=32.5, $fn=64);
+}"><div class="cap">reward 0.59</div></div><div class="tile mid"><img src="../img/e4af2dd4ab09.png" loading="lazy" title="difference() {
+    cylinder(h=15, r=32.5, $fn=64);
+}"><div class="cap">reward 0.59</div></div><div class="tile mid"><img src="../img/e4af2dd4ab09.png" loading="lazy" title="difference() {
+    cylinder(h=15, r=32.5, $fn=64);
+}"><div class="cap">reward 0.59</div></div></div></div></div>

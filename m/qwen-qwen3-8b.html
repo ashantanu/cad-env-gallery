@@ -40,612 +40,216 @@ tr:last-child td { border-bottom: none; }
 .gtile .cap { min-height: 28px; }
 .pill { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px;
         background: #eef2ff; color: #4338ca; margin-left: 6px; }
-</style><div class="wrap"><p><a href="../index.html">&larr; leaderboard</a></p><h1>qwen/qwen3-8b</h1><p class="sub">mean reward 0.816 · compile rate 100% · 84 valid rollouts. Blue = reference; green &ge; 0.9, orange &ge; 0.4, red below. Hover a tile for the generated OpenSCAD.</p><div class="card"><h3>L1 · example 0 · mean 1.00 · max 1.00</h3><p>Create an upright cylinder of height 55mm and diameter 20mm.</p><div class="row"><div class="tile ref"><img src="../img/ea1f19cb3559.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/b00b5e13ef01.png" loading="lazy" title="cylinder(r=10, h=55, $fn=64);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/b00b5e13ef01.png" loading="lazy" title="cylinder(r=10, h=55, $fn=64);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/b00b5e13ef01.png" loading="lazy" title="cylinder(r=10, h=55, $fn=64);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/b00b5e13ef01.png" loading="lazy" title="cylinder(r=10, h=55, $fn=64);"><div class="cap">reward 1.00</div></div></div></div><div class="card"><h3>L2 · example 1 · mean 0.87 · max 0.87</h3><p>Create a 75mm by 65mm plate of thickness 11mm with a centered 30mm-diameter through-hole.</p><div class="row"><div class="tile ref"><img src="../img/4ed5c59a26b1.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/c7d91d68c484.png" loading="lazy" title="difference() {
-    cube([75, 65, 11]);
-    translate([37.5, 32.5, 5.5]) cylinder(r=15, h=11, $fn=64);
-}"><div class="cap">reward 0.87</div></div><div class="tile mid"><img src="../img/9cd360b0d7f8.png" loading="lazy" title="difference() {
-    cube([75, 65, 11]);
-    translate([37.5, 32.5, 5.5]) cylinder(h=11, r=15, $fn=64);
-}"><div class="cap">reward 0.87</div></div><div class="tile mid"><img src="../img/9cd360b0d7f8.png" loading="lazy" title="difference() {
-    cube([75, 65, 11]);
-    translate([37.5, 32.5, 5.5]) cylinder(h=11, r=15, $fn=64);
-}"><div class="cap">reward 0.87</div></div><div class="tile mid"><img src="../img/9cd360b0d7f8.png" loading="lazy" title="difference() {
-    cube([75, 65, 11]);
-    translate([37.5, 32.5, 5.5]) cylinder(h=11, r=15, $fn=64);
-}"><div class="cap">reward 0.87</div></div></div></div><div class="card"><h3>L3 · example 2 · mean 0.54 · max 0.60</h3><p>An L-shaped bracket 20mm wide: a horizontal leg 65mm long and a vertical leg 30mm tall, both 10mm thick, joined at a right angle. The horizontal leg has a circular hole of radius 4mm through its center, drilled vertically.</p><div class="row"><div class="tile ref"><img src="../img/ad47bfb0921f.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/8bed37d34d68.png" loading="lazy" title="$fn=64;
-
-// Define the horizontal leg
-difference() {
-    // Main horizontal part
-    cube([65, 20, 10]);
-    
-    // Circular hole in the horizontal leg
-    translate([32.5, 10, 0]) cylinder(h=10, r=4, $fn=64);
-}
-
-// Define the vertical leg
-translate([65, 0, 0]) {
-    difference() {
-        // Main vertical part
-        cube([10, 20, 30]);
-        
-        // No hole in the vertical leg
-    }
-}"><div class="cap">reward 0.60</div></div><div class="tile mid"><img src="../img/6e657319ea9a.png" loading="lazy" title="$fn=64;
-difference() {
-    // Horizontal leg: 65mm long, 20mm wide, 10mm thick
-    cube([65, 20, 10]);
-    // Vertical leg: 30mm tall, 20mm wide, 10mm thick
-    translate([65, 0, 0]) cube([20, 30, 10]);
-    // Circular hole in horizontal leg
-    translate([32.5, 10, 0]) cylinder(h=10, r=4, $fn=64);
-}"><div class="cap">reward 0.54</div></div><div class="tile mid"><img src="../img/e00f8ea704a0.png" loading="lazy" title="$fn=64;
-difference() {
-    // Horizontal leg: 65mm long, 20mm wide, 10mm thick
-    cube([65, 20, 10]);
-    
-    // Vertical leg: 30mm tall, 20mm wide, 10mm thick
-    translate([45, 0, 0]) cube([20, 30, 10]);
-    
-    // Circular hole in horizontal leg
-    translate([32.5, 10, 0]) cylinder(h=10, r=4, $fn=64);
-}"><div class="cap">reward 0.51</div></div><div class="tile mid"><img src="../img/5b6ace45237c.png" loading="lazy" title="$fn=64;
-difference() {
-    // Horizontal leg: 65mm long, 20mm wide, 10mm thick
-    cube([65, 20, 10]);
-    
-    // Vertical leg: 30mm tall, 20mm wide, 10mm thick
-    translate([65 - 20, 0, 0]) cube([20, 30, 10]);
-    
-    // Circular hole in horizontal leg
-    translate([65/2, 10, 0]) cylinder(h=10, r=4, $fn=64);
-}"><div class="cap">reward 0.51</div></div></div></div><div class="card"><h3>L4 · example 3 · mean 0.40 · max 0.40</h3><p>A monument-like shape: a circular base plate of radius 40mm and thickness 10mm, with a cylindrical post of radius 8mm and height 50mm standing centered on top of it, and the post capped with a hemispherical dome of radius 8mm.</p><div class="row"><div class="tile ref"><img src="../img/1840dd1f5be9.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/e6172d759a99.png" loading="lazy" title="$fn=64;
-difference() {
-    // Base plate: cylinder with radius 40, height 10
-    cylinder(r=40, h=10);
-    
-    // Cylindrical post: radius 8, height 50, centered on top of base
-    translate([0, 0, 10]) cylinder(r=8, h=50);
-    
-    // Hemispherical dome: upper half of sphere radius 8, centered on top of post
-    translate([0, 0, 60]) difference() {
-        sphere(r=8);
-        cylinder(h=16, r=8);
-    }
-}"><div class="cap">reward 0.40</div></div><div class="tile mid"><img src="../img/779261a0d19e.png" loading="lazy" title="$fn=64;
-difference() {
-    // Base plate: cylinder with radius 40, height 10
-    cylinder(r=40, h=10);
-    
-    // Cylindrical post: radius 8, height 50, centered on top of the base
-    translate([0, 0, 10]) cylinder(r=8, h=50);
-    
-    // Hemispherical dome: sphere with radius 8, cut to show only the upper hemisphere
-    translate([0, 0, 60 + 8]) sphere(r=8);
-    
-    // Remove the lower hemisphere part
-    translate([0, 0, 60]) cylinder(r=8, h=16);
-}"><div class="cap">reward 0.40</div></div><div class="tile mid"><img src="../img/a113ade6f5a8.png" loading="lazy" title="$fn=64;
-difference() {
-    // Base plate: cylinder with radius 40, height 10
-    cylinder(r=40, h=10);
-    
-    // Cylindrical post: radius 8, height 50, centered on top of base
-    translate([0, 0, 10]) cylinder(r=8, h=50);
-    
-    // Hemispherical dome: radius 8, centered on top of post
-    translate([0, 0, 60]) sphere(r=8);
-    
-    // Remove the lower hemisphere to create a dome shape
-    translate([0, 0, 52]) cylinder(r=8, h=16, $fn=64);
-}"><div class="cap">reward 0.40</div></div><div class="tile mid"><img src="../img/53c3c6cf068f.png" loading="lazy" title="$fn=64;
-difference() {
-    // Base plate
-    cylinder(r=40, h=10);
-    
-    // Post
-    translate([0, 0, 10 + 50/2]) cylinder(r=8, h=50);
-    
-    // Hemispherical dome
-    translate([0, 0, 10 + 50 + 8]) sphere(r=8);
-}"><div class="cap">reward 0.40</div></div></div></div><div class="card"><h3>L1 · example 4 · mean 1.00 · max 1.00</h3><p>A solid sphere with a radius of 20mm.</p><div class="row"><div class="tile ref"><img src="../img/02d9ce8b2cf2.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/02d9ce8b2cf2.png" loading="lazy" title="sphere(r=20, $fn=64);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/02d9ce8b2cf2.png" loading="lazy" title="sphere(r=20, $fn=64);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/02d9ce8b2cf2.png" loading="lazy" title="sphere(r=20, $fn=64);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/02d9ce8b2cf2.png" loading="lazy" title="sphere(r=20, $fn=64);"><div class="cap">reward 1.00</div></div></div></div><div class="card"><h3>L2 · example 5 · mean 0.82 · max 0.86</h3><p>A solid box 30mm x 20mm x 20mm with a rectangular notch 8mm wide and 7mm deep cut into the middle of its top face, running through the full depth of the box.</p><div class="row"><div class="tile ref"><img src="../img/c87cd339e0a7.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/e9e2b9c126a0.png" loading="lazy" title="$fn=64;
-difference() {
-    // Main box
-    cube([30, 20, 20]);
-    
-    // Notch dimensions: 8mm wide (x), 7mm deep (z), and full y-length (20mm)
-    translate([15 - 4, 10 - 0, 20 - 7]) // Centered in x, aligned in y, at depth
-        cube([8, 20, 7]);
-}"><div class="cap">reward 0.86</div></div><div class="tile mid"><img src="../img/a167a459b77c.png" loading="lazy" title="$fn=64;
-difference() {
-    // Main box
-    cube([30, 20, 20]);
-    
-    // Notch dimensions: 8mm wide (x-axis), 7mm deep (z-axis)
-    // Positioned at center of top face (x=15, y=10)
-    translate([15, 10, 20 - 7]) // Position notch at top face, 7mm into the box
-        cube([8, 20, 7]); // Width (x), full y-length (20mm), depth (z)
-}"><div class="cap">reward 0.81</div></div><div class="tile mid"><img src="../img/97f583e4ef79.png" loading="lazy" title="$fn=64;
-difference() {
-    // Main box
-    cube([30, 20, 20]);
-    
-    // Notch dimensions: 8mm wide (x), 7mm deep (z), 20mm long (y)
-    // Positioned at center of top face
-    translate([15, 10, 20]) // Move to center of top face
-        cube([8, 20, 7]);
-}"><div class="cap">reward 0.81</div></div><div class="tile mid"><img src="../img/5d4a51e221ab.png" loading="lazy" title="$fn=64;
-difference() {
-    // Main box
-    cube([30, 20, 20]);
-    
-    // Notch dimensions: 8mm wide (x), 7mm deep (z)
-    // Positioned at center of top face (x=15, y=10)
-    translate([15, 10, 20]) // Position at top face center
-        cube([8, 20, 7]); // Notch extends full y-length (20mm) and 7mm into box
-}"><div class="cap">reward 0.81</div></div></div></div><div class="card"><h3>L3 · example 6 · mean 0.78 · max 1.00</h3><p>A solid box 60mm wide (x), 30mm deep (y), and 30mm tall, with a 6mm-radius hole drilled vertically through the center of the entire part; and a cylindrical boss of radius 6mm sticking out 14mm horizontally from the center of its +X side face. The part sits on the z=0 plane, centered on the Z axis.</p><div class="row"><div class="tile ref"><img src="../img/6567d92e1cdd.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/d547f22a60fd.png" loading="lazy" title="difference() {
-    translate([-30, -15, 0]) cube([60, 30, 30]);
-    cylinder(r=6, h=30, $fn=64);
-}
-translate([30, 0, 15]) rotate([0, 90, 0]) cylinder(r=6, h=14, $fn=64);"><div class="cap">reward 1.00</div></div><div class="tile mid"><img src="../img/4d1aebc98f4d.png" loading="lazy" title="$fn=64;
-union() {
-    difference() {
-        translate([-30, -15, 0]) cube([60, 30, 30]);
-        translate([0, 0, 15]) cylinder(r=6, h=30, $fn=64, center=true);
-    }
-    translate([30, 0, 15]) rotate([90, 0, 0]) cylinder(r=6, h=14, $fn=64, center=false);
-}"><div class="cap">reward 0.79</div></div><div class="tile mid"><img src="../img/2ee4cc7a3a97.png" loading="lazy" title="union() {
-    difference() {
-        translate([-30, -15, 0]) cube([60, 30, 30]);
-        cylinder(r=6, h=30, $fn=64);
-    }
-    translate([37, 0, 15]) rotate([0, 90, 0]) cylinder(r=6, h=14, $fn=64);
-}"><div class="cap">reward 0.70</div></div><div class="tile mid"><img src="../img/b8329598a463.png" loading="lazy" title="union() {
-    difference() {
-        cube([60, 30, 30]);
-        cylinder(r=6, h=30, $fn=64, pos=[0,0,0], dir=[0,0,1]);
-    }
-    cylinder(r=6, h=14, $fn=64, pos=[30, 0, 15], dir=[1,0,0]);
-}"><div class="cap">reward 0.63</div></div></div></div><div class="card"><h3>L4 · example 7 · mean 0.55 · max 0.55</h3><p>A solid box 65mm wide (x), 50mm deep (y), and 15mm tall, with 6 holes of radius 2mm drilled vertically through it, evenly spaced on a circle of radius 19.4mm around the center, the first hole on the +X axis; and a cone of base radius 6mm and height 35mm standing centered on its top face, apex up; and a 3mm-radius hole drilled vertically through the center of the entire part; and a cylindrical boss of radius 4mm sticking out 16mm horizontally from the center of its +X side face. The part sits on the z=0 plane, centered on the Z axis.</p><div class="row"><div class="tile ref"><img src="../img/640ca46f01ca.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/d5886b65cc9d.png" loading="lazy" title="$fn=64;
-difference() {
-    // Main box
-    cube([65, 50, 15]);
-    
-    // 6 vertical holes
-    for (i = [0:5]) {
-        angle = i * 60;
-        x = 19.4 * cos(angle);
-        y = 19.4 * sin(angle);
-        translate([x, y, 0]) cylinder(h=15, r=2);
-    }
-    
-    // Center hole
-    translate([0, 0, 0]) cylinder(h=15, r=3);
-    
-    // Cone on top face
-    translate([0, 0, 15]) rotate([0, 0, 0]) cone(r1=6, r2=0, h=35);
-    
-    // Cylindrical boss on +X face
-    translate([32.5 - 4, 0, 0]) cylinder(h=16, r=4);
-}"><div class="cap">reward 0.55</div></div><div class="tile mid"><img src="../img/ae0f415e0d53.png" loading="lazy" title="$fn=64;
-difference() {
-    // Main box
-    cube([65, 50, 15]);
-
-    // 6 vertical holes on a circle
-    for (i = [0:5]) {
-        angle = i * 60;
-        x = 19.4 * cos(angle);
-        y = 19.4 * sin(angle);
-        translate([x, y, 0]) cylinder(h=15, r=2, $fn=64);
-    }
-
-    // Cone on top face, apex up
-    translate([0, 0, 15]) rotate([0, 0, 0]) cone(r1=6, r2=0, h=35, $fn=64);
-
-    // Central vertical hole
-    translate([0, 0, 0]) cylinder(h=15, r=3, $fn=64);
-
-    // Cylindrical boss on +X face
-    translate([32.5, 0, 0]) rotate([0, 90, 0]) cylinder(r=4, h=16, $fn=64);
-}"><div class="cap">reward 0.55</div></div><div class="tile mid"><img src="../img/ae0f415e0d53.png" loading="lazy" title="$fn=64;
-difference() {
-    // Main box
-    cube([65, 50, 15]);
-
-    // 6 vertical holes on a circle
-    for (i = [0:5]) {
-        angle = i * 60;
-        x = 19.4 * cos(angle);
-        y = 19.4 * sin(angle);
-        translate([x, y, 0]) cylinder(h=15, r=2, $fn=64);
-    }
-
-    // Cone on top face, apex up
-    translate([0, 0, 15]) rotate([0, 0, 0]) cone(r1=6, r2=0, h=35, $fn=64);
-
-    // Central vertical hole
-    translate([0, 0, 0]) cylinder(h=15, r=3, $fn=64);
-
-    // Cylindrical boss on +X face
-    translate([32.5, 0, 0]) rotate([0, 90, 0]) cylinder(r=4, h=16, $fn=64);
-}"><div class="cap">reward 0.55</div></div><div class="tile mid"><img src="../img/9c1956afa108.png" loading="lazy" title="$fn=64;
-difference() {
-    cube([65, 50, 15]);
-    for (i = [0:5]) {
-        angle = i * 60;
-        x = 19.4 * cos(angle);
-        y = 19.4 * sin(angle);
-        translate([x, y, 0]) cylinder(r=2, h=15);
-    }
-    translate([0, 0, 0]) cylinder(r=3, h=15);
-}
-union() {
-    translate([0, 0, 15]) cone(r=6, h=35);
-    translate([40.5, 0, 7.5]) rotate([0, 90, 0]) cylinder(r=4, h=16);
-}"><div class="cap">reward 0.55</div></div></div></div><div class="card"><h3>L1 · example 8 · mean 1.00 · max 1.00</h3><p>A solid cone 55mm tall with a base radius of 25mm, point facing up.</p><div class="row"><div class="tile ref"><img src="../img/4ab043f55265.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/4ab043f55265.png" loading="lazy" title="cylinder(h=55, r1=25, r2=0, $fn=64);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/4ab043f55265.png" loading="lazy" title="cylinder(h=55, r1=25, r2=0, $fn=64);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/4ab043f55265.png" loading="lazy" title="cylinder(h=55, r1=25, r2=0, $fn=64);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/4ab043f55265.png" loading="lazy" title="cylinder(h=55, r1=25, r2=0, $fn=64);"><div class="cap">reward 1.00</div></div></div></div><div class="card"><h3>L2 · example 9 · mean 1.00 · max 1.00</h3><p>Create a box-shaped tray 45mm x 60mm x 50mm on the outside, hollowed from the top leaving 3mm thick walls and base.</p><div class="row"><div class="tile ref"><img src="../img/0c79ba078c5d.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/a8c5f808603e.png" loading="lazy" title="difference() {
-    cube([45, 60, 50]);
-    translate([3, 3, 3]) cube([39, 54, 47]);
-}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/a8c5f808603e.png" loading="lazy" title="difference() {
-    cube([45, 60, 50]);
-    translate([3, 3, 3]) cube([39, 54, 47]);
-}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/a8c5f808603e.png" loading="lazy" title="difference() {
-    cube([45, 60, 50]);
-    translate([3, 3, 3]) cube([39, 54, 47]);
-}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/a8c5f808603e.png" loading="lazy" title="difference() {
-    cube([45, 60, 50]);
-    translate([3, 3, 3]) cube([39, 54, 47]);
-}"><div class="cap">reward 1.00</div></div></div></div><div class="card"><h3>L3 · example 10 · mean 0.62 · max 0.69</h3><p>A solid hexagonal prism 40mm tall, 60mm across the flats, with two flats parallel to the x axis, with a hemispherical dome of radius 21mm centered on its top face; and a 5mm-radius hole drilled vertically through the center of the entire part. The part sits on the z=0 plane, centered on the Z axis.</p><div class="row"><div class="tile ref"><img src="../img/f7c50cc6318a.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/62dd7135ad75.png" loading="lazy" title="r = 60 / sqrt(3);
-difference() {
-    union() {
-        linear_extrude(height=40) {
-            polygon(points=[
-                [r, 0],
-                [r/2, (r * sqrt(3))/2],
-                [-r/2, (r * sqrt(3))/2],
-                [-r, 0],
-                [-r/2, -(r * sqrt(3))/2],
-                [r/2, -(r * sqrt(3))/2]
-            ]);
-        }
-        difference() {
-            translate([0,0,61]) sphere(r=21, $fn=64);
-            translate([0,0,61 + 21]) cube([42,42,42], center=true);
-        }
-    }
-    cylinder(r=5, h=61, $fn=64, center=false);
-}"><div class="cap">reward 0.69</div></div><div class="tile mid"><img src="../img/9c3d4ef7ad60.png" loading="lazy" title="r = 60 / sqrt(3);
-difference() {
-    union() {
-        linear_extrude(height=40, center=false, $fn=64)
-        polygon(points=[
-            [r, 0],
-            [r/2, (r * sqrt(3))/2],
-            [-r/2, (r * sqrt(3))/2],
-            [-r, 0],
-            [-r/2, -(r * sqrt(3))/2],
-            [r/2, -(r * sqrt(3))/2]
-        ]);
-        difference() {
-            sphere(r=21, $fn=64, center=true);
-            translate([0,0,-21]) cylinder(h=42, r=21, $fn=64);
-        }
-    }
-    cylinder(r=5, h=61, $fn=64);
-}"><div class="cap">reward 0.59</div></div><div class="tile mid"><img src="../img/d58d54cf6b01.png" loading="lazy" title="$fn=64;
+</style><div class="wrap"><p><a href="../index.html">&larr; leaderboard</a></p><h1>qwen/qwen3-8b</h1><p class="sub">mean reward 0.874 · compile rate 95% · 120 valid rollouts. Blue = reference; green &ge; 0.9, orange &ge; 0.4, red below. Hover a tile for the generated OpenSCAD.</p><div class="card"><h3>L1 · example 0 · mean 1.00 · max 1.00</h3><p>A solid rectangular box 15mm wide, 15mm deep, and 35mm tall.</p><div class="row"><div class="tile ref"><img src="../img/49811f8b4df0.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/71ff0c1abc65.png" loading="lazy" title="cube([15, 15, 35]);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/71ff0c1abc65.png" loading="lazy" title="cube([15, 15, 35]);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/71ff0c1abc65.png" loading="lazy" title="cube([15, 15, 35]);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/71ff0c1abc65.png" loading="lazy" title="cube([15, 15, 35]);"><div class="cap">reward 1.00</div></div></div></div><div class="card"><h3>L2 · example 1 · mean 1.00 · max 1.00</h3><p>A solid hexagonal prism 35mm tall, 60mm across the flats, with two flats parallel to the x axis, with a 12mm-radius hole drilled vertically through the center of the entire part. The part sits on the z=0 plane, centered on the Z axis.</p><div class="row"><div class="tile ref"><img src="../img/9c1ee8c74a65.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/d76ca315e1f7.png" loading="lazy" title="$fn=64;
 r = 60 / sqrt(3);
 difference() {
-    union() {
-        linear_extrude(height=40, center=false) {
-            polygon(points=[[r, 0], [r/2, (r*sqrt(3))/2], [-r/2, (r*sqrt(3))/2], [-r, 0], [-r/2, -(r*sqrt(3))/2], [r/2, -(r*sqrt(3))/2]], paths=[[0,1,2,3,4,5]]);
-        }
-        difference() {
-            sphere(r=21, $fn=64, center=true);
-            translate([0,0,-21]) cylinder(h=42, r=21, $fn=64);
-        }
+    linear_extrude(height=35, center=false) {
+        polygon(points=[[r, 0], [r/2, (r*sqrt(3))/2], [-r/2, (r*sqrt(3))/2], [-r, 0], [-r/2, -(r*sqrt(3))/2], [r/2, -(r*sqrt(3))/2]]);
     }
-    cylinder(r=5, h=61, $fn=64);
-}"><div class="cap">reward 0.59</div></div><div class="tile mid"><img src="../img/8c5559c6fdb9.png" loading="lazy" title="r = 60 / sqrt(3);
-difference() {
-    union() {
-        linear_extrude(height=40, center=false)
+    cylinder(r=12, h=35, $fn=64);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/b949e0967521.png" loading="lazy" title="difference() {
+    linear_extrude(height=35) {
         polygon(points=[
-            [r, 0],
-            [r/2, (r * sqrt(3))/2],
-            [-r/2, (r * sqrt(3))/2],
-            [-r, 0],
-            [-r/2, -(r * sqrt(3))/2],
-            [r/2, -(r * sqrt(3))/2]
+            [20*sqrt(3), 0],
+            [10*sqrt(3), 30],
+            [-10*sqrt(3), 30],
+            [-20*sqrt(3), 0],
+            [-10*sqrt(3), -30],
+            [10*sqrt(3), -30]
         ]);
-        difference() {
-            sphere(r=21, $fn=64, center=true);
-            translate([0,0,-21]) cylinder(h=42, r=21, $fn=64);
-        }
     }
-    translate([0,0,30.5]) cylinder(r=5, h=61, $fn=64, center=true);
-}"><div class="cap">reward 0.59</div></div></div></div><div class="card"><h3>L4 · example 11 · mean 0.64 · max 0.67</h3><p>A solid upright cylinder of radius 30mm and height 50mm, with a hemispherical dome of radius 6mm centered on its top face; and a horizontal hole of radius 14mm drilled along the X axis through the whole part at half its height, centered in Y; and 6 holes of radius 2mm drilled vertically through it, evenly spaced on a circle of radius 16.3mm around the center, the first hole on the +X axis. The part sits on the z=0 plane, centered on the Z axis.</p><div class="row"><div class="tile ref"><img src="../img/bc175895b6cc.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/0d313600bdce.png" loading="lazy" title="$fn=64;
+    cylinder(r=12, h=35, $fn=64);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/dfc287a8af92.png" loading="lazy" title="$fn=64;
 difference() {
-    // Main cylinder
-    cylinder(r=30, h=50, $fn=64);
-    
-    // Hemispherical dome on top
-    intersection() {
-        sphere(r=6, $fn=64);
-        translate([0,0,50]) cube([12,12,6], center=true);
+    linear_extrude(height=35) {
+        polygon(points=[
+            [20*sqrt(3), 0],
+            [10*sqrt(3), 30],
+            [-10*sqrt(3), 30],
+            [-20*sqrt(3), 0],
+            [-10*sqrt(3), -30],
+            [10*sqrt(3), -30]
+        ]);
     }
-    
-    // Horizontal hole along X-axis at half height
-    translate([0,0,25]) cylinder(r=14, h=2*25, $fn=64);
-    
-    // Vertical holes on circle
-    for (i = [0:5]) {
-        angle = 360 * i / 6;
-        x = 16.3 * cos(angle);
-        y = 16.3 * sin(angle);
-        translate([x, y, 0]) cylinder(r=2, h=50, $fn=64);
-    }
-}"><div class="cap">reward 0.67</div></div><div class="tile mid"><img src="../img/9fd98ed715e9.png" loading="lazy" title="difference() {
-    union() {
-        cylinder(r=30, h=50, $fn=64, center=true);
-        translate([0,0,50]) difference() {
-            sphere(r=6, $fn=64);
-            cube([12,12,12], center=true);
-        };
-    };
-    translate([0,0,25]) cylinder(r=14, h=60, $fn=64, center=true);
-    translate([16.3, 0, 0]) cylinder(r=2, h=56, $fn=64, center=true);
-    translate([8.15, 14.1, 0]) cylinder(r=2, h=56, $fn=64, center=true);
-    translate([-8.15, 14.1, 0]) cylinder(r=2, h=56, $fn=64, center=true);
-    translate([-16.3, 0, 0]) cylinder(r=2, h=56, $fn=64, center=true);
-    translate([-8.15, -14.1, 0]) cylinder(r=2, h=56, $fn=64, center=true);
-    translate([8.15, -14.1, 0]) cylinder(r=2, h=56, $fn=64, center=true);
-}"><div class="cap">reward 0.67</div></div><div class="tile mid"><img src="../img/915ed345d84c.png" loading="lazy" title="difference() {
-    union() {
-        cylinder(r=30, h=50, $fn=64);
-        difference() {
-            sphere(r=6, $fn=64);
-            plane(v=[0,0,1], p=[0,0,50]);
-        }
-    }
-    translate([0,0,25]) rotate([0,90,0]) cylinder(r=14, h=50, $fn=64, center=true);
-    for (i = [0:5]) {
-        angle = i * 60;
-        x = 16.3 * cos(angle);
-        y = 16.3 * sin(angle);
-        translate([x, y, 0]) cylinder(r=2, h=50, $fn=64);
-    }
-}"><div class="cap">reward 0.62</div></div><div class="tile mid"><img src="../img/972381d16c5f.png" loading="lazy" title="$fn=64;
+    cylinder(h=35, r=12, $fn=64);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/41e4d5e253f8.png" loading="lazy" title="difference() {
+    linear_extrude(height=35, center=false)
+    polygon(points=[[20*sqrt(3), 0], [10*sqrt(3), 30], [-10*sqrt(3), 30], [-20*sqrt(3), 0], [-10*sqrt(3), -30], [10*sqrt(3), -30]], $fn=64);
+    cylinder(r=12, h=35, $fn=64);
+}"><div class="cap">reward 1.00</div></div></div></div><div class="card"><h3>L5 · example 2 · mean 1.00 · max 1.00</h3><p>Create a triangular prism standing 45mm tall: its base is a right triangle with legs of 20mm (along X) and 30mm (along Y) meeting at the origin.</p><div class="row"><div class="tile ref"><img src="../img/6c1686b0b7bc.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/c3b11243f18b.png" loading="lazy" title="linear_extrude(height=45) {
+    polygon(points=[[0,0], [20,0], [0,30]]);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/c3b11243f18b.png" loading="lazy" title="linear_extrude(height=45) {
+    polygon(points=[[0,0], [20,0], [0,30]]);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/ee12ba181718.png" loading="lazy" title="linear_extrude(height=45) {
+    polygon(points=[[0,0], [20,0], [0,30]], paths=[[0,1,2]]);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/ee12ba181718.png" loading="lazy" title="linear_extrude(height=45) {
+    polygon(points=[[0,0], [20,0], [0,30]], paths=[[0,1,2]]);
+}"><div class="cap">reward 1.00</div></div></div></div><div class="card"><h3>L4 · example 3 · mean 0.35 · max 0.70</h3><p>A solid hexagonal prism 50mm tall, 40mm across the flats, with two flats parallel to the x axis, with a 3mm-radius hole drilled vertically through the center of the entire part; and a cone of base radius 12mm and height 20mm standing centered on its top face, apex up. The part sits on the z=0 plane, centered on the Z axis.</p><div class="row"><div class="tile ref"><img src="../img/2f69fabbadc6.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/6906e178e74e.png" loading="lazy" title="$fn=64;
 difference() {
-    // Main cylinder
-    cylinder(h=50, r=30, $fn=64, center=true);
-    
-    // Hemispherical dome
-    difference() {
-        sphere(r=6, $fn=64, center=true);
-        cylinder(h=6, r=6, $fn=64, center=true);
+    // Hexagonal prism
+    linear_extrude(height=50) {
+        polygon(points=[
+            [40 / sqrt(3), 0],
+            [20 / sqrt(3), 20],
+            [-20 / sqrt(3), 20],
+            [-40 / sqrt(3), 0],
+            [-20 / sqrt(3), -20],
+            [20 / sqrt(3), -20]
+        ]);
     }
-    
-    // Horizontal hole along X-axis
-    translate([0, 0, 25]) {
-        cylinder(r=14, h=2, $fn=64, center=true);
-    }
-    
-    // Vertical holes
-    for (i = [0:5]) {
-        angle = 360 * i / 6;
-        x = 16.3 * cos(angle);
-        y = 16.3 * sin(angle);
-        translate([x, y, 0]) {
-            cylinder(r=2, h=50, $fn=64, center=true);
-        }
-    }
-}"><div class="cap">reward 0.58</div></div></div></div><div class="card"><h3>L1 · example 12 · mean 1.00 · max 1.00</h3><p>A solid rectangular box 70mm wide, 25mm deep, and 50mm tall.</p><div class="row"><div class="tile ref"><img src="../img/10b0be1e2eb1.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/469f0d0c46d6.png" loading="lazy" title="cube([70, 25, 50]);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/469f0d0c46d6.png" loading="lazy" title="cube([70, 25, 50]);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/469f0d0c46d6.png" loading="lazy" title="cube([70, 25, 50]);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/469f0d0c46d6.png" loading="lazy" title="cube([70, 25, 50]);"><div class="cap">reward 1.00</div></div></div></div><div class="card"><h3>L2 · example 13 · mean 1.00 · max 1.00</h3><p>Create a box-shaped tray 70mm x 55mm x 45mm on the outside, hollowed from the top leaving 5mm thick walls and base.</p><div class="row"><div class="tile ref"><img src="../img/746e6544e083.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/b413e3a4eca7.png" loading="lazy" title="$fn=64;
-difference() {
-    // Outer box
-    cube([70, 55, 45]);
-    
-    // Hollow inner space
-    translate([5, 5, 5]) cube([60, 45, 40]);
-}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/b78c3541f78e.png" loading="lazy" title="difference() {
-    cube([70, 55, 45]);
-    translate([5, 5, 5]) cube([60, 45, 40]);
-}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/b78c3541f78e.png" loading="lazy" title="difference() {
-    cube([70, 55, 45]);
-    translate([5, 5, 5]) cube([60, 45, 40]);
-}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/b78c3541f78e.png" loading="lazy" title="difference() {
-    cube([70, 55, 45]);
-    translate([5, 5, 5]) cube([60, 45, 40]);
-}"><div class="cap">reward 1.00</div></div></div></div><div class="card"><h3>L3 · example 14 · mean 0.69 · max 0.87</h3><p>A solid hexagonal prism 15mm tall, 50mm across the flats, with two flats parallel to the x axis, with a 11mm-radius hole drilled vertically through the center of the entire part; and a square pad 32mm x 32mm and 5mm tall sitting centered on its top face. The part sits on the z=0 plane, centered on the Z axis.</p><div class="row"><div class="tile ref"><img src="../img/b2312b76a05c.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/3e9ffaac54c8.png" loading="lazy" title="$fn=64;
-r = 50 / sqrt(3);
-union() {
-    difference() {
-        linear_extrude(height=15, center=false) {
-            polygon(points=[
-                [r, 0],
-                [r/2, (r*sqrt(3))/2],
-                [-r/2, (r*sqrt(3))/2],
-                [-r, 0],
-                [-r/2, -(r*sqrt(3))/2],
-                [r/2, -(r*sqrt(3))/2]
-            ]);
-        }
-        cylinder(h=15, r=11, $fn=64);
-    }
-    translate([0, 0, 17.5]) cube([32, 32, 5], center=true);
-}"><div class="cap">reward 0.87</div></div><div class="tile mid"><img src="../img/3cb3fa6fdcd4.png" loading="lazy" title="$fn=64;
+    // Vertical hole
+    cylinder(h=50, r=3, $fn=64);
+    // Cone on top
+    translate([0, 0, 50]) rotate([90, 0, 0]) cylinder(r1=12, r2=0, h=20, $fn=64);
+}"><div class="cap">reward 0.70</div></div><div class="tile mid"><img src="../img/ed684ac352a7.png" loading="lazy" title="$fn=64;
+// Hexagonal prism parameters
+apothem = 20; // distance across flats
+R = 2 * apothem / sqrt(3); // radius from center to vertex
+prism_height = 50;
 
+// Create hexagonal prism
 difference() {
-    linear_extrude(height=15, center=false) {
+    // Hexagonal prism
+    linear_extrude(prism_height) {
+        polygon(points=[
+            [R, 0],
+            [R/2, (R * sqrt(3))/2],
+            [-R/2, (R * sqrt(3))/2],
+            [-R, 0],
+            [-R/2, -(R * sqrt(3))/2],
+            [R/2, -(R * sqrt(3))/2]
+        ]);
+    }
+    // Vertical hole
+    cylinder(h=prism_height, r=3, $fn=64);
+    // Cone on top
+    translate([0, 0, prism_height - 20]) {
+        cone(r1=12, h=20, $fn=64);
+    }
+}"><div class="cap">reward 0.69</div></div><div class="tile bad"><div class="noimg">compile failed</div><div class="cap">reward 0.00</div></div><div class="tile bad"><div class="noimg">compile failed</div><div class="cap">reward 0.00</div></div></div></div><div class="card"><h3>L1 · example 4 · mean 1.00 · max 1.00</h3><p>A solid cylinder 25mm tall with a radius of 20mm, standing upright.</p><div class="row"><div class="tile ref"><img src="../img/8c186885def2.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/8c186885def2.png" loading="lazy" title="cylinder(h=25, r=20, $fn=64);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/8c186885def2.png" loading="lazy" title="cylinder(h=25, r=20, $fn=64);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/8c186885def2.png" loading="lazy" title="cylinder(h=25, r=20, $fn=64);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/8c186885def2.png" loading="lazy" title="cylinder(h=25, r=20, $fn=64);"><div class="cap">reward 1.00</div></div></div></div><div class="card"><h3>L5 · example 5 · mean 1.00 · max 1.00</h3><p>Create a triangular prism standing 25mm tall: its base is a right triangle with legs of 45mm (along X) and 30mm (along Y) meeting at the origin.</p><div class="row"><div class="tile ref"><img src="../img/f93fcbf7a554.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/457a2a53e30b.png" loading="lazy" title="linear_extrude(height=25) {
+    polygon(points=[[0,0], [45,0], [0,30]]);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/457a2a53e30b.png" loading="lazy" title="linear_extrude(height=25) {
+    polygon(points=[[0,0], [45,0], [0,30]]);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/457a2a53e30b.png" loading="lazy" title="linear_extrude(height=25) {
+    polygon(points=[[0,0], [45,0], [0,30]]);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/457a2a53e30b.png" loading="lazy" title="linear_extrude(height=25) {
+    polygon(points=[[0,0], [45,0], [0,30]]);
+}"><div class="cap">reward 1.00</div></div></div></div><div class="card"><h3>L3 · example 6 · mean 0.68 · max 1.00</h3><p>A solid hexagonal prism 25mm tall, 50mm across the flats, with two flats parallel to the x axis, with 4 holes of radius 2mm drilled vertically through it, evenly spaced on a circle of radius 18.1mm around the center, the first hole on the +X axis; and a 8mm-radius hole drilled vertically through the center of the entire part. The part sits on the z=0 plane, centered on the Z axis.</p><div class="row"><div class="tile ref"><img src="../img/bc790c7f6382.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/3f3a89ad9aab.png" loading="lazy" title="$fn=64;
+difference() {
+    // Hexagonal prism
+    linear_extrude(height=25, center=false) {
         polygon(points=[
             [50 / sqrt(3), 0],
             [50 / sqrt(3) * cos(60), 50 / sqrt(3) * sin(60)],
-            [50 / sqrt(3) * cos(120), 50 / sqrt(3) * sin(120)],
-            [50 / sqrt(3) * cos(180), 50 / sqrt(3) * sin(180)],
-            [50 / sqrt(3) * cos(240), 50 / sqrt(3) * sin(240)],
-            [50 / sqrt(3) * cos(300), 50 / sqrt(3) * sin(300)]
+            [-50 / sqrt(3) * cos(60), 50 / sqrt(3) * sin(60)],
+            [-50 / sqrt(3), 0],
+            [-50 / sqrt(3) * cos(60), -50 / sqrt(3) * sin(60)],
+            [50 / sqrt(3) * cos(60), -50 / sqrt(3) * sin(60)]
         ]);
     }
-    cylinder(r=11, h=15, $fn=64);
-}
-translate([0,0,15]) cube([32,32,5]);"><div class="cap">reward 0.68</div></div><div class="tile mid"><img src="../img/f85c12d6b6ba.png" loading="lazy" title="$fn=64;
-r = 50 / sqrt(3);
+    // Central hole
+    cylinder(r=8, h=25, $fn=64);
+    // Four small holes
+    for (angle = [0, 90, 180, 270]) {
+        translate([18.1 * cos(angle), 18.1 * sin(angle), 0]) {
+            cylinder(r=2, h=25, $fn=64);
+        }
+    }
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/b9096c9aa3c7.png" loading="lazy" title="$fn=64;
+R = 50 / sqrt(3);
 difference() {
-    linear_extrude(height=15, center=false) {
+    linear_extrude(height=25) {
         polygon(points=[
-            [r, 0],
-            [r/2, (r * sqrt(3))/2],
-            [-r/2, (r * sqrt(3))/2],
-            [-r, 0],
-            [-r/2, -(r * sqrt(3))/2],
-            [r/2, -(r * sqrt(3))/2]
+            [R, 0],
+            [R * cos(60), R * sin(60)],
+            [-R * cos(60), R * sin(60)],
+            [-R, 0],
+            [-R * cos(60), -R * sin(60)],
+            [R * cos(60), -R * sin(60)]
         ]);
     }
-    cylinder(h=15, r=11, $fn=64);
-}
-translate([0, 0, 15]) cube([32, 32, 5]);"><div class="cap">reward 0.68</div></div><div class="tile mid"><img src="../img/e1b51a82b45b.png" loading="lazy" title="$fn=64;
-r = 50 / sqrt(3);
+    cylinder(r=8, h=25, $fn=64);
+    for (i = [0:3]) {
+        angle = i * 90;
+        x = 18.1 * cos(angle);
+        y = 18.1 * sin(angle);
+        translate([x, y, 0]) cylinder(r=2, h=25, $fn=64);
+    }
+}"><div class="cap">reward 1.00</div></div><div class="tile mid"><img src="../img/f002eb145b71.png" loading="lazy" title="difference() {
+    linear_extrude(height=25, center=false) polygon(points=[[25, 0], [12.5, 21.65], [-12.5, 21.65], [-25, 0], [-12.5, -21.65], [12.5, -21.65]]);
+    translate([18.1, 0, 0]) cylinder(r=2, h=25, $fn=64);
+    translate([0, 18.1, 0]) cylinder(r=2, h=25, $fn=64);
+    translate([-18.1, 0, 0]) cylinder(r=2, h=25, $fn=64);
+    translate([0, -18.1, 0]) cylinder(r=2, h=25, $fn=64);
+    translate([0, 0, 0]) cylinder(r=8, h=25, $fn=64);
+}"><div class="cap">reward 0.72</div></div><div class="tile bad"><img src="../img/9a0ff7ef0bb7.png" loading="lazy" title="$fn=64;
 difference() {
-    linear_extrude(height=15, center=false) {
+    // Hexagonal prism
+    R = 50 / sqrt(3);
+    linear_extrude(height=25, center=false) {
         polygon(points=[
-            [r, 0],
-            [r/2, (r*sqrt(3))/2],
-            [-r/2, (r*sqrt(3))/2],
-            [-r, 0],
-            [-r/2, -(r*sqrt(3))/2],
-            [r/2, -(r*sqrt(3))/2]
+            [R, 0],
+            [R * cos(60 * pi / 180), R * sin(60 * pi / 180)],
+            [R * cos(120 * pi / 180), R * sin(120 * pi / 180)],
+            [R * cos(180 * pi / 180), R * sin(180 * pi / 180)],
+            [R * cos(240 * pi / 180), R * sin(240 * pi / 180)],
+            [R * cos(300 * pi / 180), R * sin(300 * pi / 180)]
         ]);
     }
-    cylinder(r=11, h=15, $fn=64);
-}
-translate([0, 0, 17.5]) cube([32, 32, 5]);"><div class="cap">reward 0.55</div></div></div></div><div class="card"><h3>L4 · example 15 · mean 0.49 · max 0.56</h3><p>A monument-like shape: a circular base plate of radius 30mm and thickness 8mm, with a cylindrical post of radius 20mm and height 25mm standing centered on top of it, and the post capped with a hemispherical dome of radius 20mm.</p><div class="row"><div class="tile ref"><img src="../img/bd724f9a580a.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/058f3187869f.png" loading="lazy" title="union() {
-    cylinder(r=30, h=8, $fn=64);
-    translate([0,0,8]) cylinder(r=20, h=25, $fn=64);
-    difference() {
-        translate([0,0,33]) sphere(r=20, $fn=64);
-        translate([0,0,13]) cylinder(h=40, r=20, $fn=64);
+    // Subtract the four holes
+    positions = [
+        [18.1, 0],
+        [0, 18.1],
+        [-18.1, 0],
+        [0, -18.1]
+    ];
+    for (pos = positions) {
+        translate(pos) cylinder(r=2, h=25, $fn=64);
     }
-}"><div class="cap">reward 0.56</div></div><div class="tile mid"><img src="../img/516e8fa3d2cf.png" loading="lazy" title="union() {
-    cylinder(r=30, h=8, $fn=64);
-    translate([0, 0, 8]) cylinder(r=20, h=25, $fn=64);
-    translate([0, 0, 33]) difference() {
-        sphere(r=20, $fn=64);
-        cylinder(r=20, h=20, $fn=64);
-    }
-}"><div class="cap">reward 0.56</div></div><div class="tile mid"><img src="../img/12208e130eed.png" loading="lazy" title="$fn=64;
-difference() {
-    // Base plate: cylinder with radius 30mm, height 8mm
-    cylinder(r=30, h=8);
-    
-    // Cylindrical post: radius 20mm, height 25mm, centered on top of base
-    translate([0, 0, 8]) cylinder(r=20, h=25);
-    
-    // Hemispherical dome: radius 20mm, attached to top of post
-    translate([0, 0, 8 + 25]) sphere(r=20);
-}"><div class="cap">reward 0.42</div></div><div class="tile mid"><img src="../img/34f5d9311ff9.png" loading="lazy" title="$fn=64;
-difference() {
-    // Base plate
-    cylinder(r=30, h=8);
-    
-    // Cylindrical post
-    translate([0, 0, 8]) cylinder(r=20, h=25);
-    
-    // Hemispherical dome
-    translate([0, 0, 8 + 25]) sphere(r=20);
-    
-    // Cut off the lower hemisphere
-    translate([0, 0, 8 + 25 - 20]) cylinder(r=20, h=40, $fn=64);
-}"><div class="cap">reward 0.42</div></div></div></div><div class="card"><h3>L1 · example 16 · mean 1.00 · max 1.00</h3><p>Create an upright cone: base diameter 80mm, height 50mm, apex at the top.</p><div class="row"><div class="tile ref"><img src="../img/241094a88afb.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/00a44e45bbb7.png" loading="lazy" title="cylinder(r1=40, r2=0, h=50, $fn=64);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/241094a88afb.png" loading="lazy" title="cylinder(h=50, r1=40, r2=0, $fn=64);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/00a44e45bbb7.png" loading="lazy" title="cylinder(r1=40, r2=0, h=50, $fn=64);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/00a44e45bbb7.png" loading="lazy" title="cylinder(r1=40, r2=0, h=50, $fn=64);"><div class="cap">reward 1.00</div></div></div></div><div class="card"><h3>L2 · example 17 · mean 1.00 · max 1.00</h3><p>Create a box-shaped tray 55mm x 30mm x 60mm on the outside, hollowed from the top leaving 4mm thick walls and base.</p><div class="row"><div class="tile ref"><img src="../img/34219b6a0079.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/6df0ce54fdc4.png" loading="lazy" title="difference() {
-    cube([55, 30, 60]);
-    translate([4, 4, 4]) cube([47, 22, 56]);
-}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/6df0ce54fdc4.png" loading="lazy" title="difference() {
-    cube([55, 30, 60]);
-    translate([4, 4, 4]) cube([47, 22, 56]);
-}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/35f2f4e7757f.png" loading="lazy" title="$fn=64;
-difference() {
-    // Outer box
-    cube([55, 30, 60]);
-    
-    // Hollowed inner part
-    translate([4, 4, 4]) cube([55-8, 30-8, 60-4]);
-}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/6df0ce54fdc4.png" loading="lazy" title="difference() {
-    cube([55, 30, 60]);
-    translate([4, 4, 4]) cube([47, 22, 56]);
-}"><div class="cap">reward 1.00</div></div></div></div><div class="card"><h3>L3 · example 18 · mean 0.82 · max 0.94</h3><p>A solid box 45mm wide (x), 40mm deep (y), and 25mm tall, with 3 holes of radius 2mm drilled vertically through it, evenly spaced on a circle of radius 14.2mm around the center, the first hole on the +X axis; and a cylindrical post of radius 5mm and height 40mm standing centered on its top face. The part sits on the z=0 plane, centered on the Z axis.</p><div class="row"><div class="tile ref"><img src="../img/3160ff46ce9d.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/ecf0ca07ab65.png" loading="lazy" title="$fn=64;
-difference() {
-    cube([45,40,25]);
-    // Holes
-    translate([36.7, 20, 0]) cylinder(h=25, r=2, $fn=64);
-    translate([18.3, 32.4, 0]) cylinder(h=25, r=2, $fn=64);
-    translate([18.3, 6.6, 0]) cylinder(h=25, r=2, $fn=64);
-}
-union() {
-    // Post
-    translate([22.5, 20, 25]) cylinder(r=5, h=40, $fn=64);
-}"><div class="cap">reward 0.94</div></div><div class="tile good"><img src="../img/9180b42ba1d3.png" loading="lazy" title="$fn=64;
-difference() {
-    cube([45,40,25]);
-    // Holes
-    translate([36.7, 20, 0]) cylinder(h=25, r=2, $fn=64);
-    translate([18.3, 32.4, 0]) cylinder(h=25, r=2, $fn=64);
-    translate([18.3, 6.6, 0]) cylinder(h=25, r=2, $fn=64);
-}
-union() {
-    difference() {
-        cube([45,40,25]);
-        // Holes
-        translate([36.7, 20, 0]) cylinder(h=25, r=2, $fn=64);
-        translate([18.3, 32.4, 0]) cylinder(h=25, r=2, $fn=64);
-        translate([18.3, 6.6, 0]) cylinder(h=25, r=2, $fn=64);
-    }
-    translate([22.5, 20, 25]) cylinder(r=5, h=40, $fn=64);
-}"><div class="cap">reward 0.94</div></div><div class="tile good"><img src="../img/9180b42ba1d3.png" loading="lazy" title="$fn=64;
-difference() {
-    cube([45,40,25]);
-    // Holes
-    translate([36.7, 20, 0]) cylinder(h=25, r=2, $fn=64);
-    translate([18.3, 32.4, 0]) cylinder(h=25, r=2, $fn=64);
-    translate([18.3, 6.6, 0]) cylinder(h=25, r=2, $fn=64);
-}
-union() {
-    difference() {
-        cube([45,40,25]);
-        // Holes
-        translate([36.7, 20, 0]) cylinder(h=25, r=2, $fn=64);
-        translate([18.3, 32.4, 0]) cylinder(h=25, r=2, $fn=64);
-        translate([18.3, 6.6, 0]) cylinder(h=25, r=2, $fn=64);
-    }
-    translate([22.5, 20, 25]) cylinder(r=5, h=40, $fn=64);
-}"><div class="cap">reward 0.94</div></div><div class="tile mid"><img src="../img/e54eb011aac8.png" loading="lazy" title="$fn=64;
-difference() {
-    // Main box
-    cube([45, 40, 25], center=true);
-    
-    // Holes
-    for (i = [0:2]) {
-        angle = i * 120;
-        x = 14.2 * cos(angle);
-        y = 14.2 * sin(angle);
-        translate([x, y, 0]) cylinder(h=25, r=2, $fn=64);
-    }
-    
-    // Post
-    translate([0, 0, 25]) cylinder(h=40, r=5, $fn=64);
-}"><div class="cap">reward 0.44</div></div></div></div><div class="card"><h3>L4 · example 19 · mean 0.92 · max 1.00</h3><p>A hexagonal prism (like a nut) 8mm tall, measuring 35mm across the flats, with a circular hole of radius 6mm drilled through its center along the axis.</p><div class="row"><div class="tile ref"><img src="../img/bc4a0d8a19de.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/2f6f006b95e7.png" loading="lazy" title="$fn=64;
-difference() {
-    linear_extrude(height=8) {
+    // Subtract the central hole
+    cylinder(r=8, h=25, $fn=64);
+}"><div class="cap">reward 0.00</div></div></div></div><div class="card"><h3>L4 · example 7 · mean 0.62 · max 0.93</h3><p>A solid hexagonal prism 50mm tall, 35mm across the flats, with two flats parallel to the x axis, with hollowed out from the top into an open container with 5mm thick walls and floor. The part sits on the z=0 plane, centered on the Z axis.</p><div class="row"><div class="tile ref"><img src="../img/2d27993a9d46.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/de24220d51d4.png" loading="lazy" title="difference() {
+    // Original solid hexagonal prism
+    linear_extrude(height=50, center=false) {
         polygon(points=[
-            [35/sqrt(3), 0],
-            [35/sqrt(3)*cos(60), 35/sqrt(3)*sin(60)],
-            [-35/sqrt(3)*cos(60), 35/sqrt(3)*sin(60)],
-            [-35/sqrt(3), 0],
-            [-35/sqrt(3)*cos(60), -35/sqrt(3)*sin(60)],
-            [35/sqrt(3)*cos(60), -35/sqrt(3)*sin(60)]
-        ]);
+            [35 / sqrt(3), 0],
+            [35 / (2 * sqrt(3)), 35 / 2],
+            [-35 / (2 * sqrt(3)), 35 / 2],
+            [-35 / sqrt(3), 0],
+            [-35 / (2 * sqrt(3)), -35 / 2],
+            [35 / (2 * sqrt(3)), -35 / 2]
+        ], paths=[[0,1,2,3,4,5]]);
     }
-    cylinder(r=6, h=8, $fn=64);
-}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/cc03e91b906f.png" loading="lazy" title="$fn=64;
+    // Hollowed-out inner prism
+    translate([0, 0, 5]) linear_extrude(height=45, center=false) {
+        polygon(points=[
+            [25 / sqrt(3), 0],
+            [25 / (2 * sqrt(3)), 25 / 2],
+            [-25 / (2 * sqrt(3)), 25 / 2],
+            [-25 / sqrt(3), 0],
+            [-25 / (2 * sqrt(3)), -25 / 2],
+            [25 / (2 * sqrt(3)), -25 / 2]
+        ], paths=[[0,1,2,3,4,5]]);
+    }
+}"><div class="cap">reward 0.93</div></div><div class="tile mid"><img src="../img/1ee6f2a38999.png" loading="lazy" title="module hexagon(w) {
+    r = w / sqrt(3);
+    points = [
+        [r, 0],
+        [r * 0.5, r * 0.8660],
+        [-r * 0.5, r * 0.8660],
+        [-r, 0],
+        [-r * 0.5, -r * 0.8660],
+        [r * 0.5, -r * 0.8660]
+    ];
+    polygon(points);
+}
+
 difference() {
-    linear_extrude(height=8) {
+    linear_extrude(height=50, center=false) hexagon(w=35);
+    linear_extrude(height=50, center=false) hexagon(w=25);
+}"><div class="cap">reward 0.80</div></div><div class="tile mid"><img src="../img/579a60d1ffd2.png" loading="lazy" title="$fn=64;
+difference() {
+    linear_extrude(height=50) {
         polygon(points=[
             [35/sqrt(3), 0],
             [35/(2*sqrt(3)), 35/2],
@@ -655,32 +259,503 @@ difference() {
             [35/(2*sqrt(3)), -35/2]
         ]);
     }
-    cylinder(r=6, h=8, $fn=64);
-}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/e3ce658c75c3.png" loading="lazy" title="$fn=64;
-difference() {
-    // Hexagonal prism
-    linear_extrude(height=8, twist=0, scale=1, center=false)
+    linear_extrude(height=45) {
         polygon(points=[
-            [35 / sqrt(3), 0],
-            [35 / (2 * sqrt(3)), 35 / 2],
-            [-35 / (2 * sqrt(3)), 35 / 2],
-            [-35 / sqrt(3), 0],
-            [-35 / (2 * sqrt(3)), -35 / 2],
-            [35 / (2 * sqrt(3)), -35 / 2]
-        ]);
-    // Circular hole
-    cylinder(h=8, r=6, $fn=64);
-}"><div class="cap">reward 1.00</div></div><div class="tile mid"><img src="../img/97ba284e3b51.png" loading="lazy" title="$fn=64;
-difference() {
-    linear_extrude(height=8) {
-        polygon(points=[
-            [35/sqrt(3), 0],
-            [35/(2*sqrt(3)), 35/(2*sqrt(3))],
-            [-35/(2*sqrt(3)), 35/(2*sqrt(3))],
-            [-35/sqrt(3), 0],
-            [-35/(2*sqrt(3)), -35/(2*sqrt(3))],
-            [35/(2*sqrt(3)), -35/(2*sqrt(3))]
+            [25/sqrt(3), 0],
+            [25/(2*sqrt(3)), 25/2],
+            [-25/(2*sqrt(3)), 25/2],
+            [-25/sqrt(3), 0],
+            [-25/(2*sqrt(3)), -25/2],
+            [25/(2*sqrt(3)), -25/2]
         ]);
     }
-    cylinder(r=6, h=8, $fn=64);
-}"><div class="cap">reward 0.67</div></div></div></div><div class="card"><h3>L1 · example 20 · mean 1.00 · max 1.00</h3><p>A solid cylinder 30mm tall with a radius of 10mm, standing upright.</p><div class="row"><div class="tile ref"><img src="../img/d1e33f75b480.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/d1e33f75b480.png" loading="lazy" title="cylinder(h=30, r=10, $fn=64);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/d1e33f75b480.png" loading="lazy" title="cylinder(h=30, r=10, $fn=64);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/d1e33f75b480.png" loading="lazy" title="cylinder(h=30, r=10, $fn=64);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/d1e33f75b480.png" loading="lazy" title="cylinder(h=30, r=10, $fn=64);"><div class="cap">reward 1.00</div></div></div></div></div>
+}"><div class="cap">reward 0.76</div></div><div class="tile bad"><img src="../img/1e621cf9de58.png" loading="lazy" title="r = 35 / sqrt(3);
+r_inner = 25 / sqrt(3);
+
+difference() {
+    linear_extrude(height=50, center=false) {
+        polygon(points=[
+            [r * cos(0), r * sin(0)],
+            [r * cos(pi/3), r * sin(pi/3)],
+            [r * cos(2*pi/3), r * sin(2*pi/3)],
+            [r * cos(pi), r * sin(pi)],
+            [r * cos(4*pi/3), r * sin(4*pi/3)],
+            [r * cos(5*pi/3), r * sin(5*pi/3)]
+        ]);
+    }
+    linear_extrude(height=45, center=false, translate=[0,0,5]) {
+        polygon(points=[
+            [r_inner * cos(0), r_inner * sin(0)],
+            [r_inner * cos(pi/3), r_inner * sin(pi/3)],
+            [r_inner * cos(2*pi/3), r_inner * sin(2*pi/3)],
+            [r_inner * cos(pi), r_inner * sin(pi)],
+            [r_inner * cos(4*pi/3), r_inner * sin(4*pi/3)],
+            [r_inner"><div class="cap">reward 0.00</div></div></div></div><div class="card"><h3>L5 · example 8 · mean 1.00 · max 1.00</h3><p>Create a 35mm-tall prism shaped like a plus sign, formed by two perpendicular 60mm x 20mm bars crossing at their midpoints.</p><div class="row"><div class="tile ref"><img src="../img/7e33355936b7.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/6805233301c5.png" loading="lazy" title="union() {
+    translate([-30, -10, 0]) cube([60, 20, 35]);
+    translate([-10, -30, 0]) cube([20, 60, 35]);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/8958eb971ff0.png" loading="lazy" title="union() {
+    cube([60, 20, 35], center=true);
+    cube([20, 60, 35], center=true);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/8958eb971ff0.png" loading="lazy" title="union() {
+    cube([60, 20, 35], center=true);
+    cube([20, 60, 35], center=true);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/8958eb971ff0.png" loading="lazy" title="union() {
+    cube([60, 20, 35], center=true);
+    cube([20, 60, 35], center=true);
+}"><div class="cap">reward 1.00</div></div></div></div><div class="card"><h3>L2 · example 9 · mean 0.87 · max 1.00</h3><p>An open-top rectangular container with outer dimensions 55mm x 70mm x 55mm, wall and floor thickness 5mm.</p><div class="row"><div class="tile ref"><img src="../img/b525ff7bd5be.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/212c91b8d521.png" loading="lazy" title="union() {
+    // Floor
+    cube([55, 70, 5]);
+    // Front wall
+    translate([0, 65, 0]) cube([55, 5, 55]);
+    // Back wall
+    translate([0, 0, 0]) cube([55, 5, 55]);
+    // Left wall
+    cube([5, 70, 55]);
+    // Right wall
+    translate([50, 0, 0]) cube([5, 70, 55]);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/6e5548729eb4.png" loading="lazy" title="difference() {
+    cube([55, 70, 55]);
+    translate([5, 5, 5]) cube([45, 60, 50]);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/6e5548729eb4.png" loading="lazy" title="difference() {
+    cube([55, 70, 55]);
+    translate([5, 5, 5]) cube([45, 60, 50]);
+}"><div class="cap">reward 1.00</div></div><div class="tile mid"><img src="../img/db2bc20c6733.png" loading="lazy" title="difference() {
+    cube([70, 55, 55]);
+    cube([60, 45, 50], [5, 5, 5]);
+}"><div class="cap">reward 0.46</div></div></div></div><div class="card"><h3>L3 · example 10 · mean 1.00 · max 1.00</h3><p>A stepped circular shaft standing upright, made of 2 stacked coaxial cylinders from bottom to top: a section of radius 35mm and height 25mm, then a section of radius 20mm and height 20mm. Each section is narrower than the one below it.</p><div class="row"><div class="tile ref"><img src="../img/51ca79a364e4.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/2bdf61903529.png" loading="lazy" title="$fn=64;
+union() {
+    cylinder(r=35, h=25, $fn=64);
+    translate([0,0,25]) cylinder(r=20, h=20, $fn=64);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/2bdf61903529.png" loading="lazy" title="$fn=64;
+union() {
+    cylinder(r=35, h=25, $fn=64);
+    translate([0,0,25]) cylinder(r=20, h=20, $fn=64);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/2bdf61903529.png" loading="lazy" title="$fn=64;
+union() {
+    cylinder(r=35, h=25, $fn=64);
+    translate([0,0,25]) cylinder(r=20, h=20, $fn=64);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/2bdf61903529.png" loading="lazy" title="$fn=64;
+union() {
+    cylinder(r=35, h=25, $fn=64);
+    translate([0,0,25]) cylinder(r=20, h=20, $fn=64);
+}"><div class="cap">reward 1.00</div></div></div></div><div class="card"><h3>L5 · example 11 · mean 0.87 · max 0.90</h3><p>A flat rectangular plate 90mm x 50mm and 11mm thick, with a rounded slot cut all the way through its center: the slot is 64mm long along the X direction and 12mm wide, with semicircular ends.</p><div class="row"><div class="tile ref"><img src="../img/d8c7279d9e38.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/8d68b863955f.png" loading="lazy" title="difference() {
+    cube([90, 50, 11]);
+    union() {
+        translate([13, 19, 0]) cube([64, 12, 11]);
+        translate([13, 19, 0]) rotate([0, 90, 0]) cylinder(r=6, h=11, $fn=64);
+        translate([77, 19, 0]) rotate([0, 90, 0]) cylinder(r=6, h=11, $fn=64);
+    }
+}"><div class="cap">reward 0.90</div></div><div class="tile mid"><img src="../img/a135cc8ca461.png" loading="lazy" title="difference() {
+    cube([90, 50, 11]);
+    translate([45, 25, 0]) 
+    linear_extrude(height=11, twist=0, scale=1) {
+        polygon(points=[[0, 0], [64, 0], [64, 12], [0, 12]], 
+               paths=[[0, 0], [64, 0], [64, 12], [0, 12]]);
+    }
+    translate([45 - 32, 25, 0]) 
+    cylinder(r=6, h=11, $fn=64);
+    translate([45 + 32, 25, 0]) 
+    cylinder(r=6, h=11, $fn=64);
+}"><div class="cap">reward 0.88</div></div><div class="tile mid"><img src="../img/462d28681026.png" loading="lazy" title="difference() {
+    cube([90, 50, 11]);
+    translate([13, 19, 0]) linear_extrude(height=11) {
+        union() {
+            square([64, 12]);
+            translate([-6, 0]) circle(r=6, $fn=64);
+            translate([64 - 6, 0]) circle(r=6, $fn=64);
+        }
+    }
+}"><div class="cap">reward 0.88</div></div><div class="tile mid"><img src="../img/1a9473fe740a.png" loading="lazy" title="difference() {
+    cube([90, 50, 11]);
+    union() {
+        translate([13, 25 - 6, 0]) cube([64, 12, 11]);
+        translate([13 - 6, 25, 0]) cylinder(r=6, h=11, $fn=64, rot=90);
+        translate([77 + 6, 25, 0]) cylinder(r=6, h=11, $fn=64, rot=90);
+    }
+}"><div class="cap">reward 0.80</div></div></div></div><div class="card"><h3>L1 · example 12 · mean 1.00 · max 1.00</h3><p>A solid rectangular box 10mm wide, 55mm deep, and 60mm tall.</p><div class="row"><div class="tile ref"><img src="../img/8a853e58f10d.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/055930e4a46c.png" loading="lazy" title="cube([10, 55, 60]);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/055930e4a46c.png" loading="lazy" title="cube([10, 55, 60]);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/055930e4a46c.png" loading="lazy" title="cube([10, 55, 60]);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/055930e4a46c.png" loading="lazy" title="cube([10, 55, 60]);"><div class="cap">reward 1.00</div></div></div></div><div class="card"><h3>L2 · example 13 · mean 0.95 · max 1.00</h3><p>A solid box 45mm x 25mm x 60mm with a rectangular notch 10mm wide and 13mm deep cut into the middle of its top face, running through the full depth of the box.</p><div class="row"><div class="tile ref"><img src="../img/807576ed580d.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/16da522f11e4.png" loading="lazy" title="difference() {
+    cube([45, 25, 60]);
+    translate([ (45 - 10) / 2, 0, 60 - 13 ]) cube([10, 25, 13]);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/71c30002eb70.png" loading="lazy" title="difference() {
+    cube([45, 25, 60]);
+    translate([ (45-10)/2, 0, 60-13 ]) cube([10, 25, 13]);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/16da522f11e4.png" loading="lazy" title="difference() {
+    cube([45, 25, 60]);
+    translate([ (45 - 10) / 2, 0, 60 - 13 ]) cube([10, 25, 13]);
+}"><div class="cap">reward 1.00</div></div><div class="tile mid"><img src="../img/555bc2a1f6d9.png" loading="lazy" title="difference() {
+    cube([45, 25, 60]);
+    translate([0, 7.5, 47]) cube([45, 10, 13]);
+}"><div class="cap">reward 0.82</div></div></div></div><div class="card"><h3>L5 · example 14 · mean 1.00 · max 1.00</h3><p>A vertical prism 45mm tall whose footprint is a right triangle with one leg 35mm along the X axis and the other leg 20mm along the Y axis, right angle at the origin.</p><div class="row"><div class="tile ref"><img src="../img/22ce955cece2.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/0fa458d1421a.png" loading="lazy" title="linear_extrude(height=45) {
+    polygon(points=[[0,0], [35,0], [0,20]], paths=[[0,1,2]]);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/0fa458d1421a.png" loading="lazy" title="linear_extrude(height=45) {
+    polygon(points=[[0,0], [35,0], [0,20]], paths=[[0,1,2]]);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/387847a1eb5e.png" loading="lazy" title="linear_extrude(height=45) {
+    polygon(points=[[0,0], [35,0], [0,20]]);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/0fa458d1421a.png" loading="lazy" title="linear_extrude(height=45) {
+    polygon(points=[[0,0], [35,0], [0,20]], paths=[[0,1,2]]);
+}"><div class="cap">reward 1.00</div></div></div></div><div class="card"><h3>L4 · example 15 · mean 1.00 · max 1.00</h3><p>A hexagonal prism (like a nut) 18mm tall, measuring 30mm across the flats, with a circular hole of radius 5mm drilled through its center along the axis.</p><div class="row"><div class="tile ref"><img src="../img/bb0a3119dc16.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/8f44bb679760.png" loading="lazy" title="difference() {
+    linear_extrude(height=18) {
+        polygon(points=[
+            [10*sqrt(3), 0],
+            [5*sqrt(3), 15],
+            [-5*sqrt(3), 15],
+            [-10*sqrt(3), 0],
+            [-5*sqrt(3), -15],
+            [5*sqrt(3), -15]
+        ]);
+    }
+    cylinder(h=18, r=5, $fn=64);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/4d1861598fbc.png" loading="lazy" title="r = 30 / sqrt(3);
+difference() {
+    linear_extrude(height=18, center=false) {
+        polygon(points=[
+            [r, 0],
+            [r * 0.5, r * sqrt(3)/2],
+            [-r * 0.5, r * sqrt(3)/2],
+            [-r, 0],
+            [-r * 0.5, -r * sqrt(3)/2],
+            [r * 0.5, -r * sqrt(3)/2]
+        ]);
+    }
+    cylinder(r=5, h=18, $fn=64);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/37a140eb4233.png" loading="lazy" title="$fn=64;
+r = 30 / sqrt(3);
+difference() {
+    linear_extrude(height=18) {
+        polygon(points=[
+            [r, 0],
+            [r/2, (r * sqrt(3))/2],
+            [-r/2, (r * sqrt(3))/2],
+            [-r, 0],
+            [-r/2, -(r * sqrt(3))/2],
+            [r/2, -(r * sqrt(3))/2]
+        ]);
+    }
+    cylinder(r=5, h=18, $fn=64);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/a3f868c47532.png" loading="lazy" title="difference() {
+    linear_extrude(height=18) {
+        polygon(points=[[10*sqrt(3), 0], [5*sqrt(3), 15], [-5*sqrt(3), 15], [-10*sqrt(3), 0], [-5*sqrt(3), -15], [5*sqrt(3), -15]]);
+    }
+    cylinder(r=5, h=18, $fn=64);
+}"><div class="cap">reward 1.00</div></div></div></div><div class="card"><h3>L1 · example 16 · mean 1.00 · max 1.00</h3><p>A solid cylinder 60mm tall with a radius of 5mm, standing upright.</p><div class="row"><div class="tile ref"><img src="../img/ef7e4665720f.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/ef7e4665720f.png" loading="lazy" title="cylinder(h=60, r=5, $fn=64);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/ef7e4665720f.png" loading="lazy" title="cylinder(h=60, r=5, $fn=64);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/ef7e4665720f.png" loading="lazy" title="cylinder(h=60, r=5, $fn=64);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/ef7e4665720f.png" loading="lazy" title="cylinder(h=60, r=5, $fn=64);"><div class="cap">reward 1.00</div></div></div></div><div class="card"><h3>L5 · example 17 · mean 0.97 · max 1.00</h3><p>A solid torus (donut shape) lying flat on the table: the ring&#x27;s centerline circle has a radius of 15mm and the circular tube cross-section has a radius of 5mm.</p><div class="row"><div class="tile ref"><img src="../img/4b423441fc9b.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/690e4e586a19.png" loading="lazy" title="rotate_extrude($fn=64) {
+    translate([15, 0, 0]) circle(r=5, $fn=64);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/690e4e586a19.png" loading="lazy" title="rotate_extrude($fn=64) {
+    translate([15, 0, 0]) circle(r=5, $fn=64);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/9132b1c3a33c.png" loading="lazy" title="$fn=64;
+rotate_extrude() {
+    translate([15, 0, 0]) circle(r=5);
+}"><div class="cap">reward 1.00</div></div><div class="tile mid"><img src="../img/dd8dd219c1cc.png" loading="lazy" title="rotate_extrude() {
+    translate([15, 0, 0]) circle(r=5, $fn=64);
+}"><div class="cap">reward 0.89</div></div></div></div><div class="card"><h3>L3 · example 18 · mean 0.85 · max 0.98</h3><p>A solid box 55mm wide (x), 50mm deep (y), and 25mm tall, with 3 holes of radius 2mm drilled vertically through it, evenly spaced on a circle of radius 18.1mm around the center, the first hole on the +X axis; and a horizontal hole of radius 3mm drilled along the X axis through the whole part at half its height, centered in Y. The part sits on the z=0 plane, centered on the Z axis.</p><div class="row"><div class="tile ref"><img src="../img/ef9525ac2ff3.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/5bb3063a6838.png" loading="lazy" title="$fn=64;
+difference() {
+    cube([55, 50, 25]);
+    // Vertical holes
+    translate([45.6, 25, 0]) cylinder(r=2, h=25);
+    translate([18.45, 40.675, 0]) cylinder(r=2, h=25);
+    translate([18.45, 9.325, 0]) cylinder(r=2, h=25);
+    // Horizontal hole
+    translate([0, 25, 12.5]) rotate([0, 90, 0]) cylinder(r=3, h=55);
+}"><div class="cap">reward 0.98</div></div><div class="tile mid"><img src="../img/b7705cedb96d.png" loading="lazy" title="difference() {
+    translate([-27.5, -25, 0]) cube([55, 50, 25]);
+    translate([18.1, 0, 12.5]) cylinder(r=2, h=25, $fn=64);
+    translate([-9.05, 15.6946, 12.5]) cylinder(r=2, h=25, $fn=64);
+    translate([-9.05, -15.6946, 12.5]) cylinder(r=2, h=25, $fn=64);
+    translate([0, 0, 12.5]) cylinder(r=3, h=55, dir=[1,0,0], $fn=64);
+}"><div class="cap">reward 0.82</div></div><div class="tile mid"><img src="../img/99d14eccdad2.png" loading="lazy" title="difference() {
+    cube([55, 50, 25]);
+    for (i = [0:2]) {
+        theta = i * 120;
+        x = 27.5 + 18.1 * cos(theta * pi / 180);
+        y = 25 + 18.1 * sin(theta * pi / 180);
+        translate([x, y, 0]) cylinder(r=2, h=25, $fn=64);
+    }
+    translate([27.5, 25, 12.5]) rotate([0, 90, 0]) cylinder(r=3, h=55, $fn=64);
+}"><div class="cap">reward 0.81</div></div><div class="tile mid"><img src="../img/91bafedcbcc9.png" loading="lazy" title="difference() {
+    cube([55, 50, 25]);
+    translate([18.1, 0, 12.5]) cylinder(r=2, h=25, $fn=64);
+    translate([18.1 * cos(2 * pi / 3), 18.1 * sin(2 * pi / 3), 12.5]) cylinder(r=2, h=25, $fn=64);
+    translate([18.1 * cos(4 * pi / 3), 18.1 * sin(4 * pi / 3), 12.5]) cylinder(r=2, h=25, $fn=64);
+    rotate([0, 90, 0]) translate([0, 0, 12.5]) cylinder(r=3, h=55, $fn=64);
+}"><div class="cap">reward 0.77</div></div></div></div><div class="card"><h3>L4 · example 19 · mean 0.76 · max 0.86</h3><p>A gear-like disc 6mm thick with radius 25mm, with 6 rectangular teeth evenly spaced around its rim. Each tooth is 5mm wide and extends 6mm radially outward from the rim, spanning the full thickness of the disc.</p><div class="row"><div class="tile ref"><img src="../img/538e0aa871be.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/74d39c23ed3b.png" loading="lazy" title="union() {
+    cylinder(r=25, h=6, $fn=64);
+    for (i = [0:5]) {
+        theta_deg = i * 60;
+        theta_rad = theta_deg * pi / 180;
+        linear_extrude(height=6) {
+            polygon(points=[
+                [25*cos(theta_rad), 25*sin(theta_rad)],
+                [25*cos(theta_rad) + 6*cos(theta_rad), 25*sin(theta_rad) + 6*sin(theta_rad)],
+                [25*cos(theta_rad) + 6*cos(theta_rad) - 5*sin(theta_rad), 25*sin(theta_rad) + 6*sin(theta_rad) + 5*cos(theta_rad)],
+                [25*cos(theta_rad) - 5*sin(theta_rad), 25*sin(theta_rad) + 5*cos(theta_rad)]
+            ]);
+        }
+    }
+}"><div class="cap">reward 0.86</div></div><div class="tile mid"><img src="../img/afeb8bb2094e.png" loading="lazy" title="$fn=64;
+cylinder(r=25, h=6, $fn=64);
+for (i = [0:5]) {
+    theta = i * 60;
+    translate([28*cos(theta), 28*sin(theta), 0]) rotate([0,0,theta]) cube([6,5,6]);
+}"><div class="cap">reward 0.77</div></div><div class="tile mid"><img src="../img/86fe891e9c8c.png" loading="lazy" title="union() {
+    cylinder(r=25, h=6, $fn=64);
+    for (i = [0:5]) {
+        rotate([0, 0, i*60]) {
+            translate([28, 0, 0]) {
+                linear_extrude(height=6) square([6, 5]);
+            }
+        }
+    }
+}"><div class="cap">reward 0.77</div></div><div class="tile mid"><img src="../img/20e9cf04bfce.png" loading="lazy" title="union() {
+    cylinder(r=25, h=6, $fn=64);
+    for (theta = [0:60:300]) {
+        rotate([theta, 0, 0]) translate([25, 0, 0]) linear_extrude(height=6) translate([-3, -2.5, 0]) square([6, 5]);
+    }
+}"><div class="cap">reward 0.65</div></div></div></div><div class="card"><h3>L5 · example 20 · mean 0.86 · max 0.92</h3><p>A flat rectangular plate 75mm x 45mm and 5mm thick, with a rounded slot cut all the way through its center: the slot is 46mm long along the X direction and 12mm wide, with semicircular ends.</p><div class="row"><div class="tile ref"><img src="../img/bed75c245e34.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/81e96d68fae3.png" loading="lazy" title="$fn=64;
+difference() {
+    cube([75, 45, 5]);
+    linear_extrude(height=5)
+    difference() {
+        translate([14.5, 16.5]) square([46, 12]);
+        translate([8.5, 16.5]) circle(r=6);
+        translate([60.5, 16.5]) circle(r=6);
+    }
+}"><div class="cap">reward 0.92</div></div><div class="tile good"><img src="../img/65888e9f731c.png" loading="lazy" title="difference() {
+    cube([75, 45, 5]);
+    union() {
+        translate([ (75-46)/2, (45-12)/2, 0 ]) cube([46, 12, 5]);
+        translate([ (75-46)/2 - 23, (45-12)/2, 0 ]) cylinder(r=6, h=5, $fn=64);
+        translate([ (75-46)/2 + 23, (45-12)/2, 0 ]) cylinder(r=6, h=5, $fn=64);
+    }
+}"><div class="cap">reward 0.91</div></div><div class="tile mid"><img src="../img/5b34d918f49f.png" loading="lazy" title="difference() {
+    cube([75, 45, 5]);
+    union() {
+        translate([ (75-46)/2, (45-12)/2, 0 ]) 
+            cube([46, 12, 5]);
+        translate([ (75-46)/2 - 6, (45-12)/2, 0 ]) 
+            cylinder(r=6, h=5, $fn=64);
+        translate([ (75-46)/2 + 46 - 6, (45-12)/2, 0 ]) 
+            cylinder(r=6, h=5, $fn=64);
+    }
+}"><div class="cap">reward 0.80</div></div><div class="tile mid"><img src="../img/bb7cd4ee8590.png" loading="lazy" title="difference() {
+    cube([75, 45, 5]);
+    union() {
+        translate([14.5, 16.5, 0]) cube([46, 12, 5]);
+        translate([8.5, 22.5, 0]) cylinder(r=6, h=5, $fn=64);
+        translate([66.5, 22.5, 0]) cylinder(r=6, h=5, $fn=64);
+    }
+}"><div class="cap">reward 0.80</div></div></div></div><div class="card"><h3>L2 · example 21 · mean 0.76 · max 0.76</h3><p>A solid box 60mm x 30mm x 55mm with a rectangular notch 14mm wide and 7mm deep cut into the middle of its top face, running through the full depth of the box.</p><div class="row"><div class="tile ref"><img src="../img/39eafbf9b0bb.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/2c4700dade29.png" loading="lazy" title="difference() {
+    cube([60, 30, 55]);
+    translate([23, 11.5, 0]) cube([14, 7, 55]);
+}"><div class="cap">reward 0.76</div></div><div class="tile mid"><img src="../img/2c4700dade29.png" loading="lazy" title="difference() {
+    cube([60, 30, 55]);
+    translate([23, 11.5, 0]) cube([14, 7, 55]);
+}"><div class="cap">reward 0.76</div></div><div class="tile mid"><img src="../img/2c4700dade29.png" loading="lazy" title="difference() {
+    cube([60, 30, 55]);
+    translate([23, 11.5, 0]) cube([14, 7, 55]);
+}"><div class="cap">reward 0.76</div></div><div class="tile mid"><img src="../img/302c2acfc10b.png" loading="lazy" title="difference() {
+    cube([60, 30, 55]);
+    translate([ (60-14)/2, (30-7)/2, 0 ]) cube([14, 7, 55]);
+}"><div class="cap">reward 0.76</div></div></div></div><div class="card"><h3>L3 · example 22 · mean 0.25 · max 0.57</h3><p>A solid hexagonal prism 20mm tall, 40mm across the flats, with two flats parallel to the x axis, with a hemispherical dome of radius 7mm centered on its top face; and 4 holes of radius 2mm drilled vertically through it, evenly spaced on a circle of radius 13.1mm around the center, the first hole on the +X axis. The part sits on the z=0 plane, centered on the Z axis.</p><div class="row"><div class="tile ref"><img src="../img/173ed91aa23f.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/3c5d3f60dbbc.png" loading="lazy" title="$fn=64;
+R = 40 / sqrt(3);
+union() {
+    difference() {
+        linear_extrude(height=20) {
+            polygon(points=[
+                [R, 0],
+                [R*cos(60), R*sin(60)],
+                [R*cos(120), R*sin(120)],
+                [R*cos(180), R*sin(180)],
+                [R*cos(240), R*sin(240)],
+                [R*cos(300), R*sin(300)]
+            ]);
+        }
+        for (i = [0:3]) {
+            rotate([0,0,i*90]) {
+                translate([13.1, 0, 0]) cylinder(h=20, r=2, $fn=64);
+            }
+        }
+    }
+    difference() {
+        sphere(r=7, $fn=64);
+        translate([0,0,13]) cube([14,14,7]);
+    }
+}"><div class="cap">reward 0.57</div></div><div class="tile mid"><img src="../img/0c63fd629cf5.png" loading="lazy" title="$fn=64;
+
+R = 40 / sqrt(3);
+
+union() {
+    difference() {
+        linear_extrude(height=20) {
+            polygon(points=[
+                [R, 0],
+                [R * cos(60 * pi / 180), R * sin(60 * pi / 180)],
+                [R * cos(120 * pi / 180), R * sin(120 * pi / 180)],
+                [R * cos(180 * pi / 180), R * sin(180 * pi / 180)],
+                [R * cos(240 * pi / 180), R * sin(240 * pi / 180)],
+                [R * cos(300 * pi / 180), R * sin(300 * pi / 180)]
+            ]);
+        }
+        for (i = [0:3]) {
+            translate( [13.1 * cos(i * 90 * pi / 180), 13.1 * sin(i * 90 * pi / 180), 0] ) {
+                cylinder(r=2, h=20, $fn=64);
+            }
+        }
+    }
+    difference() {
+        sphere(r=7, $fn=64);
+        translate([0,0,20]) cube([14,14,7]);
+    "><div class="cap">reward 0.41</div></div><div class="tile bad"><img src="../img/f9eb63691c53.png" loading="lazy" title="R = 40 / sqrt(3);
+difference() {
+    union() {
+        linear_extrude(height=20) {
+            polygon(points=[
+                [R, 0],
+                [R * cos(60 * pi / 180), R * sin(60 * pi / 180)],
+                [R * cos(120 * pi / 180), R * sin(120 * pi / 180)],
+                [R * cos(180 * pi / 180), R * sin(180 * pi / 180)],
+                [R * cos(240 * pi / 180), R * sin(240 * pi / 180)],
+                [R * cos(300 * pi / 180), R * sin(300 * pi / 180)]
+            ]);
+        }
+        intersection() {
+            sphere(r=7, $fn=64);
+            translate([0, 0, 20]) cube([14, 14, 0.1]);
+        }
+    }
+    translate([13.1, 0, 0]) cylinder(r=2, h=20, $fn=64);
+    translate([0, 13.1, 0]) cylinder(r=2, h=20, $fn=64);
+    translate([-13.1, 0, 0]) cylinder(r=2, h=20, $fn=64);
+"><div class="cap">reward 0.00</div></div><div class="tile bad"><img src="../img/0b33ab3e559e.png" loading="lazy" title="$fn=64;
+R = 40 / sqrt(3);
+difference() {
+    union() {
+        linear_extrude(height=20) {
+            polygon(points=[
+                [R, 0],
+                [R * cos(60 * pi / 180), R * sin(60 * pi / 180)],
+                [R * cos(120 * pi / 180), R * sin(120 * pi / 180)],
+                [R * cos(180 * pi / 180), R * sin(180 * pi / 180)],
+                [R * cos(240 * pi / 180), R * sin(240 * pi / 180)],
+                [R * cos(300 * pi / 180), R * sin(300 * pi / 180)]
+            ]);
+        }
+        intersection() {
+            sphere(r=7);
+            translate([0,0,20]) cube([14,14,0.1]);
+        }
+    }
+    translate([13.1, 0, 0]) cylinder(r=2, h=20);
+    translate([0, 13.1, 0]) cylinder(r=2, h=20);
+    translate([-13.1, 0, 0]) cylinder(r=2, h=20);
+    translate([0, -13.1, 0])"><div class="cap">reward 0.00</div></div></div></div><div class="card"><h3>L5 · example 23 · mean 0.74 · max 0.88</h3><p>Create a D-shaft: a 50mm-tall cylinder of radius 20mm whose +X side is sliced off by a vertical plane 13mm from the axis, leaving a flat running the full height.</p><div class="row"><div class="tile ref"><img src="../img/77d3c55772fd.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="../img/d824ff9585af.png" loading="lazy" title="$fn=64;
+linear_extrude(height=50) {
+    difference() {
+        circle(r=20);
+        translate([13, -20]) square([7, 40]);
+    }
+}"><div class="cap">reward 0.88</div></div><div class="tile mid"><img src="../img/b866d4bbc9da.png" loading="lazy" title="difference() {
+    cylinder(r=20, h=50, $fn=64);
+    translate([13, 0, 0]) rotate([0, 90, 0]) cylinder(r=sqrt(231), h=7, $fn=64);
+}"><div class="cap">reward 0.69</div></div><div class="tile mid"><img src="../img/a316001791cb.png" loading="lazy" title="difference() {
+    cylinder(h=50, r=20, $fn=64);
+    translate([13, 0, 0]) cube([7, 40, 50]);
+}"><div class="cap">reward 0.69</div></div><div class="tile mid"><img src="../img/9aa7ed57d304.png" loading="lazy" title="difference() {
+    cylinder(r=20, h=50, $fn=64);
+    translate([13, 0, 0]) cube([7, 2*sqrt(20^2 - 13^2), 50]);
+}"><div class="cap">reward 0.69</div></div></div></div><div class="card"><h3>L1 · example 24 · mean 1.00 · max 1.00</h3><p>A solid rectangular box 65mm wide, 50mm deep, and 20mm tall.</p><div class="row"><div class="tile ref"><img src="../img/ce1b3b7ff393.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/9d2f3000e9db.png" loading="lazy" title="cube([65, 50, 20]);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/9d2f3000e9db.png" loading="lazy" title="cube([65, 50, 20]);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/9d2f3000e9db.png" loading="lazy" title="cube([65, 50, 20]);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/9d2f3000e9db.png" loading="lazy" title="cube([65, 50, 20]);"><div class="cap">reward 1.00</div></div></div></div><div class="card"><h3>L2 · example 25 · mean 0.85 · max 1.00</h3><p>A solid box 30mm x 30mm x 30mm with a rectangular notch 10mm wide and 5mm deep cut into the middle of its top face, running through the full depth of the box.</p><div class="row"><div class="tile ref"><img src="../img/2e475c7c9c6f.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/c1e7a575cb0e.png" loading="lazy" title="difference() {
+    cube([30,30,30]);
+    translate([10, 0, 25]) cube([10,30,5]);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/c1e7a575cb0e.png" loading="lazy" title="difference() {
+    cube([30,30,30]);
+    translate([10, 0, 25]) cube([10,30,5]);
+}"><div class="cap">reward 1.00</div></div><div class="tile mid"><img src="../img/9c70c01f60b8.png" loading="lazy" title="difference() {
+    cube([30, 30, 30]);
+    translate([10, 12.5, 0]) cube([10, 5, 30]);
+}"><div class="cap">reward 0.70</div></div><div class="tile mid"><img src="../img/9c70c01f60b8.png" loading="lazy" title="difference() {
+    cube([30, 30, 30]);
+    translate([10, 12.5, 0]) cube([10, 5, 30]);
+}"><div class="cap">reward 0.70</div></div></div></div><div class="card"><h3>L5 · example 26 · mean 0.88 · max 1.00</h3><p>Create a 65x45x15mm block with a centered vertical through-hole of radius 5mm, counterbored from the top face to radius 9mm over a depth of 9mm.</p><div class="row"><div class="tile ref"><img src="../img/c40b1e8a1f90.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/bab91e31ea43.png" loading="lazy" title="difference() {
+    cube([65,45,15]);
+    union() {
+        translate([32.5, 22.5, 7.5]) cylinder(r=5, h=15, $fn=64, center=true);
+        translate([32.5, 22.5, 10.5]) cylinder(r=9, h=9, $fn=64, center=true);
+    }
+}"><div class="cap">reward 1.00</div></div><div class="tile mid"><img src="../img/6fa31f32924d.png" loading="lazy" title="difference() {
+    cube([65, 45, 15]);
+    union() {
+        cylinder(h=15, r=5, $fn=64);
+        translate([0, 0, 6]) cylinder(h=9, r=9, $fn=64);
+    }
+}"><div class="cap">reward 0.85</div></div><div class="tile mid"><img src="../img/a89bb852c33a.png" loading="lazy" title="difference() {
+    cube([65,45,15]);
+    union() {
+        translate([0,0,6]) cylinder(r=9, h=9, $fn=64);
+        cylinder(r=5, h=6, $fn=64);
+    }
+}"><div class="cap">reward 0.85</div></div><div class="tile mid"><img src="../img/6fa31f32924d.png" loading="lazy" title="difference() {
+    cube([65, 45, 15]);
+    union() {
+        cylinder(h=15, r=5, $fn=64);
+        translate([0, 0, 6]) cylinder(h=9, r=9, $fn=64);
+    }
+}"><div class="cap">reward 0.85</div></div></div></div><div class="card"><h3>L4 · example 27 · mean 0.97 · max 1.00</h3><p>A hexagonal prism (like a nut) 10mm tall, measuring 30mm across the flats, with a circular hole of radius 5mm drilled through its center along the axis.</p><div class="row"><div class="tile ref"><img src="../img/89fecd4a537f.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/3dd5e18a73ea.png" loading="lazy" title="difference() {
+    linear_extrude(height=10) {
+        polygon(points=[
+            [10*sqrt(3), 0],
+            [5*sqrt(3), 15],
+            [-5*sqrt(3), 15],
+            [-10*sqrt(3), 0],
+            [-5*sqrt(3), -15],
+            [5*sqrt(3), -15]
+        ]);
+    }
+    cylinder(r=5, h=10, $fn=64);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/b05a807e9d90.png" loading="lazy" title="difference() {
+    linear_extrude(height=10) {
+        polygon(points=[
+            [30/sqrt(3), 0],
+            [15/sqrt(3), 15],
+            [-15/sqrt(3), 15],
+            [-30/sqrt(3), 0],
+            [-15/sqrt(3), -15],
+            [15/sqrt(3), -15]
+        ]);
+    }
+    cylinder(r=5, h=10, $fn=64);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/3dd5e18a73ea.png" loading="lazy" title="difference() {
+    linear_extrude(height=10) {
+        polygon(points=[
+            [10*sqrt(3), 0],
+            [5*sqrt(3), 15],
+            [-5*sqrt(3), 15],
+            [-10*sqrt(3), 0],
+            [-5*sqrt(3), -15],
+            [5*sqrt(3), -15]
+        ]);
+    }
+    cylinder(r=5, h=10, $fn=64);
+}"><div class="cap">reward 1.00</div></div><div class="tile mid"><img src="../img/fd95cfbede7b.png" loading="lazy" title="$fn=64;
+
+difference() {
+    linear_extrude(height=10) {
+        polygon(points = [
+            [10*sqrt(3), 0],
+            [5*sqrt(3), 15],
+            [-5*sqrt(3), 15],
+            [-10*sqrt(3), 0],
+            [-5*sqrt(3), -15],
+            [5*sqrt(3), -15]
+        ]);
+    }
+    translate([0, 0, 5]) cylinder(r=5, h=10, $fn=64);
+}"><div class="cap">reward 0.90</div></div></div></div><div class="card"><h3>L1 · example 28 · mean 1.00 · max 1.00</h3><p>A solid rectangular box 40mm wide, 40mm deep, and 20mm tall.</p><div class="row"><div class="tile ref"><img src="../img/3387029d3105.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/9cd24eaa58d2.png" loading="lazy" title="cube([40, 40, 20]);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/9cd24eaa58d2.png" loading="lazy" title="cube([40, 40, 20]);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/9cd24eaa58d2.png" loading="lazy" title="cube([40, 40, 20]);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/9cd24eaa58d2.png" loading="lazy" title="cube([40, 40, 20]);"><div class="cap">reward 1.00</div></div></div></div><div class="card"><h3>L5 · example 29 · mean 1.00 · max 1.00</h3><p>A plus-sign-shaped prism 15mm tall: two rectangular bars, each 65mm long and 10mm wide, cross at right angles at their centers (one along X, one along Y), centered on the Z axis.</p><div class="row"><div class="tile ref"><img src="../img/cdbbc84ee8c1.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/8443c33e2ba8.png" loading="lazy" title="union() {
+    translate([-32.5, -5, -7.5]) cube([65, 10, 15]);
+    translate([-5, -32.5, -7.5]) cube([10, 65, 15]);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/8443c33e2ba8.png" loading="lazy" title="union() {
+    translate([-32.5, -5, -7.5]) cube([65, 10, 15]);
+    translate([-5, -32.5, -7.5]) cube([10, 65, 15]);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/4253171a6d7b.png" loading="lazy" title="union() {
+    cube([65,10,15], center=true);
+    cube([10,65,15], center=true);
+}"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/8443c33e2ba8.png" loading="lazy" title="union() {
+    translate([-32.5, -5, -7.5]) cube([65, 10, 15]);
+    translate([-5, -32.5, -7.5]) cube([10, 65, 15]);
+}"><div class="cap">reward 1.00</div></div></div></div></div>
