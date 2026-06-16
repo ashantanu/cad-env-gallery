@@ -42,60 +42,27 @@ tr:last-child td { border-bottom: none; }
 .gtile .cap { min-height: 28px; }
 .pill { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px;
         background: #eef2ff; color: #4338ca; margin-left: 6px; }
+.tabs { display: flex; gap: 4px; margin: 14px 0 18px; border-bottom: 1px solid #e2e4e8; }
+.tabs a { padding: 8px 14px; font-size: 14px; color: #555; border: 1px solid transparent;
+          border-bottom: none; border-radius: 6px 6px 0 0; margin-bottom: -1px; }
+.tabs a:hover { background: #f0f2f6; text-decoration: none; }
+.tabs a.active { background: #fff; border-color: #e2e4e8; color: #1a1a2e; font-weight: 600; }
+.report { font-size: 14.5px; line-height: 1.55; }
+.report h2 { font-size: 19px; margin: 28px 0 8px; }
+.report h3 { font-size: 15.5px; margin: 22px 0 6px; color: #333; }
+.report table { font-size: 13px; margin: 6px 0 12px; }
+.report th, .report td { padding: 6px 10px; }
+.report code { background: #f0f2f6; padding: 1px 5px; border-radius: 3px; font-size: 12.5px; }
+.report pre { background: #0f172a; color: #e2e8f0; padding: 10px 12px; border-radius: 6px;
+              overflow-x: auto; font-size: 12.5px; }
+.report pre code { background: transparent; color: inherit; padding: 0; }
+.report img { max-width: 100%; border-radius: 6px; border: 1px solid #e2e4e8;
+              background: #000; }
+.report blockquote { border-left: 3px solid #2563eb; margin: 6px 0; padding: 2px 12px;
+                    color: #555; background: #f6f7f9; }
 </style>
 <div class="wrap">
-<h1>cad-env <span class="pill">RL environment</span></h1>
-<p class="sub">Text &rarr; OpenSCAD code generation with fully deterministic geometric
-rewards: compile (0.2) + watertight (0.1) + single component (0.1) + chamfer-distance
-similarity (0.6) against procedurally generated reference meshes. No LLM judges.
-<a href="https://app.primeintellect.ai/dashboard/environments/ashantanu/cad-env">
-Environment on the Prime Intellect Hub</a> · install: <code>prime env install
-ashantanu/cad-env</code></p>
-
-<h2>Training a Qwen3.5-2B on this env</h2>
-<p class="sub">The base Qwen3.5-2B scores 0.21 on the held-out test split. After 200 steps of GRPO on this environment (~$0.30, ~17 min on a single H100), the same model scores <b>0.62</b> — ~3× the base, the only model with a flat per-level profile, and gains the most on the hardest in-distribution levels (L4: 0.07 &rarr; 0.69). On L5 (OOD shape families never seen in training: torus, triangular prism, slot plate, counterbore, cross prism, pyramid, D-shaft) it improves from 0.24 to 0.56 — real compositional generalization, not vocab transfer.</p><p class="sub">Full write-up: <a href="report-2026-06-13-cad-2b-grpo-v2.md">report-2026-06-13-cad-2b-grpo-v2.md</a></p><p><img src="img/cad2b-v2-curve.png" style="width:100%;max-width:900px;border-radius:8px;border:1px solid #e2e4e8;background:#000;" alt="cad-2b GRPO val curve"></p><h3 style="margin-top:18px;font-size:15px;color:#444;">Same prompt, before vs after training</h3><p class="sub">Six test-split examples with the largest reward jump. Reference (blue) · base Qwen3.5-2B (before) · GRPO Qwen3.5-2B (after). Hover a tile for its generated OpenSCAD.</p><div class="card"><h3>L4 · A gear-like disc 6mm thick with radius 25mm, with 6 rectangular teeth evenly spaced around its rim. Each tooth is 5mm wide and extends 6mm radially outward from…</h3><div class="row"><div class="tile ref"><img src="img/538e0aa871be.png" loading="lazy"><div class="cap">reference</div></div><div class="tile bad"><div class="noimg">compile failed</div><div class="cap">before (base 2B) · r=0.00</div></div><div class="tile mid"><img src="img/84ed1f8488fd.png" loading="lazy" title="difference() {
-    cylinder(h=6, r=25, $fn=64);
-}"><div class="cap">after (GRPO 2B) · r=0.86</div></div></div></div><div class="card"><h3>L2 · A solid hexagonal prism 35mm tall, 60mm across the flats, with two flats parallel to the x axis, with a 12mm-radius hole drilled vertically through the center o…</h3><div class="row"><div class="tile ref"><img src="img/9c1ee8c74a65.png" loading="lazy"><div class="cap">reference</div></div><div class="tile bad"><div class="noimg">compile failed</div><div class="cap">before (base 2B) · r=0.00</div></div><div class="tile mid"><img src="img/cf22169551aa.png" loading="lazy" title="difference() {
-    cylinder(h=35, r=30, $fn=64);
-    difference() {
-        cylinder(h=35, r=12, $fn=64);
-    };
-}"><div class="cap">after (GRPO 2B) · r=0.80</div></div></div></div><div class="card"><h3>L3 · A solid hexagonal prism 25mm tall, 50mm across the flats, with two flats parallel to the x axis, with 4 holes of radius 2mm drilled vertically through it, evenl…</h3><div class="row"><div class="tile ref"><img src="img/bc790c7f6382.png" loading="lazy"><div class="cap">reference</div></div><div class="tile bad"><div class="noimg">compile failed</div><div class="cap">before (base 2B) · r=0.00</div></div><div class="tile mid"><img src="img/abe91a7742a4.png" loading="lazy" title="difference() {
-    cylinder(h=25, r=25, $fn=64);
-    difference() {
-        cylinder(h=25, r=2, $fn=64);
-    };
-}"><div class="cap">after (GRPO 2B) · r=0.73</div></div></div></div><div class="card"><h3>L1 · A solid rectangular box 65mm wide, 50mm deep, and 20mm tall.</h3><div class="row"><div class="tile ref"><img src="img/ce1b3b7ff393.png" loading="lazy"><div class="cap">reference</div></div><div class="tile bad"><img src="img/c78aedede749.png" loading="lazy" title="box([65, 50, 20]) {
-    // $fn is not used for rectangular boxes
-}"><div class="cap">before (base 2B) · r=0.00</div></div><div class="tile mid"><img src="img/0dc39c3f6411.png" loading="lazy" title="difference() {
-    cylinder(h=20, r=32.5, $fn=64);
-}"><div class="cap">after (GRPO 2B) · r=0.72</div></div></div></div><div class="card"><h3>L4 · A hexagonal prism (like a nut) 10mm tall, measuring 30mm across the flats, with a circular hole of radius 5mm drilled through its center along the axis.</h3><div class="row"><div class="tile ref"><img src="img/89fecd4a537f.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="img/2c7c74626dcd.png" loading="lazy" title="difference() {
-    // Hexagonal prism facing up
-    prism(h=10, w=30, z=0, rotate([90,0,0])); // Hexagonal face up
-
-    // Circular hole for the nut
-    cylinder(h=10, r=5, $fn=64);
-}"><div class="cap">before (base 2B) · r=0.46</div></div><div class="tile mid"><img src="img/bfbe817f2225.png" loading="lazy" title="difference() {
-    cylinder(h=10, r=15, $fn=64);
-    cylinder(h=10, r=5, $fn=64);
-}"><div class="cap">after (GRPO 2B) · r=0.83</div></div></div></div><div class="card"><h3>L4 · A hexagonal prism (like a nut) 18mm tall, measuring 30mm across the flats, with a circular hole of radius 5mm drilled through its center along the axis.</h3><div class="row"><div class="tile ref"><img src="img/bb0a3119dc16.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="img/4f02e8875856.png" loading="lazy" title="difference() {
-    // Main hexagonal prism
-    hexaminepper($x = (2 - fscale(0.5, 29, , 1.5)), 
-                  $y = (2 - fscale(0.5, 29, , 1.5)), 
-                  $z = 18, 
-                  $fn = 64, 
-                  r1 = fscale(0.3333, 30, 18), 
-                  r2 = 0, 
-                  r3 = fscale(0.3333, 30, 18));
-    
-    // Circular hole
-    cylinder(h = 18, r = 5, $fn = 64, top = 18);
-}"><div class="cap">before (base 2B) · r=0.45</div></div><div class="tile mid"><img src="img/234274f8f955.png" loading="lazy" title="difference() {
-    cylinder(h=18, r=15, $fn=64);
-    difference() {
-        cylinder(h=18, r=5, $fn=64);
-    };
-}"><div class="cap">after (GRPO 2B) · r=0.80</div></div></div></div>
+<h1>cad-env <span class="pill">RL environment</span></h1><p class="sub">Text &rarr; OpenSCAD code generation with fully deterministic geometric rewards: compile (0.2) + watertight (0.1) + single component (0.1) + chamfer-distance similarity (0.6) against procedurally generated reference meshes. No LLM judges. <a href="https://app.primeintellect.ai/dashboard/environments/ashantanu/cad-env">Environment on the Prime Intellect Hub</a> · install: <code>prime env install ashantanu/cad-env</code></p><div class="tabs"><a href="index.html" class="active">Benchmark</a><a href="training.html">Training a Qwen3.5-2B</a></div>
 
 <h2>Leaderboard (held-out test split)</h2>
 <p class="sub">30 examples (1-in-3 are L5 OOD shapes not seen in training) ·

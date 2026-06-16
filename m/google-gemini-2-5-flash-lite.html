@@ -40,6 +40,24 @@ tr:last-child td { border-bottom: none; }
 .gtile .cap { min-height: 28px; }
 .pill { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px;
         background: #eef2ff; color: #4338ca; margin-left: 6px; }
+.tabs { display: flex; gap: 4px; margin: 14px 0 18px; border-bottom: 1px solid #e2e4e8; }
+.tabs a { padding: 8px 14px; font-size: 14px; color: #555; border: 1px solid transparent;
+          border-bottom: none; border-radius: 6px 6px 0 0; margin-bottom: -1px; }
+.tabs a:hover { background: #f0f2f6; text-decoration: none; }
+.tabs a.active { background: #fff; border-color: #e2e4e8; color: #1a1a2e; font-weight: 600; }
+.report { font-size: 14.5px; line-height: 1.55; }
+.report h2 { font-size: 19px; margin: 28px 0 8px; }
+.report h3 { font-size: 15.5px; margin: 22px 0 6px; color: #333; }
+.report table { font-size: 13px; margin: 6px 0 12px; }
+.report th, .report td { padding: 6px 10px; }
+.report code { background: #f0f2f6; padding: 1px 5px; border-radius: 3px; font-size: 12.5px; }
+.report pre { background: #0f172a; color: #e2e8f0; padding: 10px 12px; border-radius: 6px;
+              overflow-x: auto; font-size: 12.5px; }
+.report pre code { background: transparent; color: inherit; padding: 0; }
+.report img { max-width: 100%; border-radius: 6px; border: 1px solid #e2e4e8;
+              background: #000; }
+.report blockquote { border-left: 3px solid #2563eb; margin: 6px 0; padding: 2px 12px;
+                    color: #555; background: #f6f7f9; }
 </style><div class="wrap"><p><a href="../index.html">&larr; leaderboard</a></p><h1>google/gemini-2.5-flash-lite</h1><p class="sub">mean reward 0.776 · compile rate 92% · 120 valid rollouts. Blue = reference; green &ge; 0.9, orange &ge; 0.4, red below. Hover a tile for the generated OpenSCAD.</p><div class="card"><h3>L1 · example 0 · mean 1.00 · max 1.00</h3><p>A solid rectangular box 15mm wide, 15mm deep, and 35mm tall.</p><div class="row"><div class="tile ref"><img src="../img/49811f8b4df0.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/71ff0c1abc65.png" loading="lazy" title="cube([15, 15, 35]);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/71ff0c1abc65.png" loading="lazy" title="cube([15, 15, 35]);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/71ff0c1abc65.png" loading="lazy" title="cube([15, 15, 35]);"><div class="cap">reward 1.00</div></div><div class="tile good"><img src="../img/71ff0c1abc65.png" loading="lazy" title="cube([15, 15, 35]);"><div class="cap">reward 1.00</div></div></div></div><div class="card"><h3>L2 · example 1 · mean 0.83 · max 1.00</h3><p>A solid hexagonal prism 35mm tall, 60mm across the flats, with two flats parallel to the x axis, with a 12mm-radius hole drilled vertically through the center of the entire part. The part sits on the z=0 plane, centered on the Z axis.</p><div class="row"><div class="tile ref"><img src="../img/9c1ee8c74a65.png" loading="lazy"><div class="cap">reference</div></div><div class="tile good"><img src="../img/46019f2f28d8.png" loading="lazy" title="difference() {
     linear_extrude(height = 35, center = false, $fn=64) {
         // Hexagon

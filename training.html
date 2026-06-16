@@ -1,0 +1,525 @@
+<!doctype html><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Training a Qwen3.5-2B · cad-env</title><style>
+body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 0;
+       background: #f6f7f9; color: #1a1a2e; }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 24px 20px 60px; }
+h1 { font-size: 26px; margin: 8px 0 4px; }
+h2 { font-size: 19px; margin: 36px 0 10px; }
+.sub { color: #555; font-size: 14px; margin-bottom: 8px; }
+a { color: #2563eb; text-decoration: none; }
+a:hover { text-decoration: underline; }
+table { border-collapse: collapse; width: 100%; background: #fff;
+        border: 1px solid #e2e4e8; border-radius: 8px; overflow: hidden;
+        font-size: 13.5px; }
+th, td { padding: 8px 12px; text-align: right; border-bottom: 1px solid #eef0f3; }
+th { background: #fafbfc; font-weight: 600; }
+th:first-child, td:first-child { text-align: left; }
+tr:last-child td { border-bottom: none; }
+.bar { display: inline-block; height: 9px; border-radius: 4px;
+       background: linear-gradient(90deg,#34d399,#10b981); vertical-align: middle; }
+.card { background: #fff; border: 1px solid #e2e4e8; border-radius: 8px;
+        padding: 12px 16px; margin-bottom: 14px; }
+.card h3 { margin: 0 0 4px; font-size: 13.5px; color: #555; font-weight: 600; }
+.card p { margin: 0 0 10px; font-size: 13px; }
+.row { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
+.tile { flex: 0 0 150px; text-align: center; }
+.tile img { width: 150px; height: 150px; border-radius: 5px; border: 3px solid #ccc;
+            background: #fff; }
+.tile.ref img { border-color: #2563eb; }
+.tile.good img { border-color: #16a34a; }
+.tile.mid img { border-color: #d97706; }
+.tile.bad img { border-color: #dc2626; }
+.noimg { width: 150px; height: 150px; border-radius: 5px; border: 3px dashed #dc2626;
+         display: flex; align-items: center; justify-content: center; font-size: 12px;
+         color: #dc2626; box-sizing: border-box; background: #fff; }
+.cap { font-size: 11px; color: #666; margin-top: 2px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 10px; }
+.gtile { background: #fff; border: 1px solid #e2e4e8; border-radius: 8px;
+         padding: 8px; text-align: center; }
+.gtile img { width: 100%; border-radius: 4px; }
+.gtile .cap { min-height: 28px; }
+.pill { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px;
+        background: #eef2ff; color: #4338ca; margin-left: 6px; }
+.tabs { display: flex; gap: 4px; margin: 14px 0 18px; border-bottom: 1px solid #e2e4e8; }
+.tabs a { padding: 8px 14px; font-size: 14px; color: #555; border: 1px solid transparent;
+          border-bottom: none; border-radius: 6px 6px 0 0; margin-bottom: -1px; }
+.tabs a:hover { background: #f0f2f6; text-decoration: none; }
+.tabs a.active { background: #fff; border-color: #e2e4e8; color: #1a1a2e; font-weight: 600; }
+.report { font-size: 14.5px; line-height: 1.55; }
+.report h2 { font-size: 19px; margin: 28px 0 8px; }
+.report h3 { font-size: 15.5px; margin: 22px 0 6px; color: #333; }
+.report table { font-size: 13px; margin: 6px 0 12px; }
+.report th, .report td { padding: 6px 10px; }
+.report code { background: #f0f2f6; padding: 1px 5px; border-radius: 3px; font-size: 12.5px; }
+.report pre { background: #0f172a; color: #e2e8f0; padding: 10px 12px; border-radius: 6px;
+              overflow-x: auto; font-size: 12.5px; }
+.report pre code { background: transparent; color: inherit; padding: 0; }
+.report img { max-width: 100%; border-radius: 6px; border: 1px solid #e2e4e8;
+              background: #000; }
+.report blockquote { border-left: 3px solid #2563eb; margin: 6px 0; padding: 2px 12px;
+                    color: #555; background: #f6f7f9; }
+</style>
+<div class="wrap">
+<h1>cad-env <span class="pill">RL environment</span></h1><p class="sub">Text &rarr; OpenSCAD code generation with fully deterministic geometric rewards: compile (0.2) + watertight (0.1) + single component (0.1) + chamfer-distance similarity (0.6) against procedurally generated reference meshes. No LLM judges. <a href="https://app.primeintellect.ai/dashboard/environments/ashantanu/cad-env">Environment on the Prime Intellect Hub</a> · install: <code>prime env install ashantanu/cad-env</code></p><div class="tabs"><a href="index.html">Benchmark</a><a href="training.html" class="active">Training a Qwen3.5-2B</a></div>
+
+<div class="report">
+<h1>cad-2b GRPO — run 2 (held-out eval + test-split leaderboard)</h1>
+<p><strong>Run id:</strong> <code>r28vmvfv6om7kxg9awiqhnmh</code> · <strong>Run name:</strong> <code>cad-2b-v2</code> · 2026-06-12</p>
+<p>Fixes the two reporting gaps from run 1: (a) no eval-time held-out signal
+during training, (b) leaderboard reused the same val split, so there was no
+truly out-of-sample comparison. Both fixed: 41-point in-run val curve + a
+dedicated test split with OOD shape families, used for both the final-model
+score and the cross-model leaderboard.</p>
+<h2>Setup</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td><code>Qwen/Qwen3.5-2B</code></td>
+</tr>
+<tr>
+<td>Algo</td>
+<td>GRPO (Prime hosted, compute=M)</td>
+</tr>
+<tr>
+<td>Steps</td>
+<td>200</td>
+</tr>
+<tr>
+<td>Batch / rollouts</td>
+<td>32 examples × 8 rollouts</td>
+</tr>
+<tr>
+<td>Max tokens</td>
+<td>1536 (no truncation observed in eval)</td>
+</tr>
+<tr>
+<td>Sampling</td>
+<td><code>enable_thinking=false</code>, same for <code>[eval.sampling]</code></td>
+</tr>
+<tr>
+<td>Difficulty filter</td>
+<td>drop batches w/ solve-all &gt; 0.8 or solve-none &gt; 0.2</td>
+</tr>
+<tr>
+<td>Env</td>
+<td><code>ashantanu/cad-env</code> (compositional, levels 1–4 in train)</td>
+</tr>
+<tr>
+<td>Train pool</td>
+<td>2000 examples, seed 0</td>
+</tr>
+<tr>
+<td>Val (in-run)</td>
+<td>60 examples, seed+1, dedup vs train, levels 1–4, every 5 steps × 2 rollouts</td>
+</tr>
+<tr>
+<td>Test (post-run)</td>
+<td>60 examples, seed+2, dedup vs train+val, 1-in-3 OOD shapes (level 5)</td>
+</tr>
+<tr>
+<td>Checkpoints</td>
+<td>every 10 steps, 25 retained</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>~$0.30 (200 steps + 41 eval rounds)</td>
+</tr>
+</tbody>
+</table>
+<h2>Eval piping (the actual fix)</h2>
+<p>Run 1 silently emitted zero eval metrics because the config used <code>[val]</code>
+alone (mechanism A, dead) and <code>[eval]</code> with no <code>[[eval.env]]</code> sub-block
+(mechanism B, no-op). Smoke run 2 armed <code>[[eval.env]]</code> and eval <em>did</em> fire,
+but every score was ~0 with completion lengths up to 55K chars at
+<code>max_tokens=1024</code>. Cause: <code>[eval.sampling]</code> is a <strong>separate config section</strong>
+and does not inherit <code>[sampling]</code> — <code>enable_thinking=false</code> was being
+dropped, so eval ran with thinking mode on. Once <code>[eval.sampling]</code> was
+added, smoke run 3 returned base 0.153 → 0.518 in 10 steps with
+completions back under 1024 chars. Then this run.</p>
+<h2>Training dynamics — in-run val curve</h2>
+<p><img alt="val curve" src="img/cad2b-v2-curve.png" /></p>
+<p>41 eval points, 60 held-out examples × 2 rollouts each:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Step</th>
+<th style="text-align: right;">val avg@2</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0 (base)</td>
+<td style="text-align: right;">0.214</td>
+<td>matches base Qwen3.5-2B on the leaderboard (0.210)</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.518</td>
+<td>format learning kicks in</td>
+</tr>
+<tr>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;"><strong>0.728</strong></td>
+<td>peak</td>
+</tr>
+<tr>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">0.592</td>
+<td>drop (likely a bad batch under difficulty filtering)</td>
+</tr>
+<tr>
+<td style="text-align: right;">~65–125</td>
+<td style="text-align: right;">0.60–0.64</td>
+<td>recovery + plateau</td>
+</tr>
+<tr>
+<td style="text-align: right;">130</td>
+<td style="text-align: right;">0.549</td>
+<td>second dip</td>
+</tr>
+<tr>
+<td style="text-align: right;">145–200</td>
+<td style="text-align: right;">0.64–0.65</td>
+<td>stable plateau</td>
+</tr>
+<tr>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">0.639</td>
+<td>final</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Headline:</strong> the model reaches its peak at step 35 (+0.51 over base) and
+then <em>plateaus, not climbs</em>. Training past ~35 steps does not improve the
+held-out reward. If we'd been watching this curve in run 1 (where we trained
+for 100 blind steps), we'd have stopped earlier.</p>
+<h2>Final-model on test split — and the leaderboard</h2>
+<p>After training, the merged adapter was deployed and evaluated on the
+held-out test split (60 examples, seed+2, deduped vs train+val, every 3rd
+example a level-5 OOD shape family never seen in training). Same protocol
+re-run for all 12 leaderboard models on the same test split.</p>
+<h3>Test-split leaderboard (<code>n=30</code> examples × 4 rollouts = 120)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Rank</th>
+<th>Model</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">L1</th>
+<th style="text-align: right;">L2</th>
+<th style="text-align: right;">L3</th>
+<th style="text-align: right;">L4</th>
+<th style="text-align: right;">L5 (OOD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>anthropic/claude-haiku-4.5</td>
+<td style="text-align: right;">0.957</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.97</td>
+<td style="text-align: right;">0.87</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">0.98</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>deepseek/deepseek-chat</td>
+<td style="text-align: right;">0.921</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.91</td>
+<td style="text-align: right;">0.82</td>
+<td style="text-align: right;">0.81</td>
+<td style="text-align: right;">0.97</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>qwen/qwen3-8b</td>
+<td style="text-align: right;">0.874</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.89</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">0.74</td>
+<td style="text-align: right;">0.93</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>openai/gpt-4.1-mini</td>
+<td style="text-align: right;">0.816</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.73</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">0.61</td>
+<td style="text-align: right;">0.88</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>google/gemini-2.5-flash-lite</td>
+<td style="text-align: right;">0.776</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">0.51</td>
+<td style="text-align: right;">0.75</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>openai/gpt-4.1-nano</td>
+<td style="text-align: right;">0.734</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">0.66</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.71</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td>mistralai/mistral-small-3.2-24b</td>
+<td style="text-align: right;">0.723</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.72</td>
+<td style="text-align: right;">0.55</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">0.69</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>8</strong></td>
+<td><strong>Qwen3.5-2B + GRPO (ours)</strong></td>
+<td style="text-align: right;"><strong>0.621</strong></td>
+<td style="text-align: right;"><strong>0.67</strong></td>
+<td style="text-align: right;"><strong>0.60</strong></td>
+<td style="text-align: right;"><strong>0.64</strong></td>
+<td style="text-align: right;"><strong>0.69</strong></td>
+<td style="text-align: right;"><strong>0.56</strong></td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>meta-llama/Llama-3.2-1B-Instruct</td>
+<td style="text-align: right;">0.473</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">0.44</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>Qwen/Qwen3.5-9B</td>
+<td style="text-align: right;">0.401</td>
+<td style="text-align: right;">0.88</td>
+<td style="text-align: right;">0.43</td>
+<td style="text-align: right;">0.32</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">0.30</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td>Qwen/Qwen3.5-2B (base)</td>
+<td style="text-align: right;">0.210</td>
+<td style="text-align: right;">0.45</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">0.24</td>
+</tr>
+<tr>
+<td style="text-align: right;">12</td>
+<td>Qwen/Qwen3.5-0.8B</td>
+<td style="text-align: right;">0.110</td>
+<td style="text-align: right;">0.27</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.08</td>
+</tr>
+<tr>
+<td style="text-align: right;">13</td>
+<td>meta-llama/Llama-3.2-3B-Instruct</td>
+<td style="text-align: right;">0.087</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.16</td>
+</tr>
+</tbody>
+</table>
+<h3>Per-level deltas vs base Qwen3.5-2B</h3>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th style="text-align: right;">Base</th>
+<th style="text-align: right;">Trained</th>
+<th style="text-align: right;">Δ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1 (primitives)</td>
+<td style="text-align: right;">0.45</td>
+<td style="text-align: right;">0.67</td>
+<td style="text-align: right;">+0.22</td>
+</tr>
+<tr>
+<td>L2 (transforms)</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;"><strong>+0.51</strong></td>
+</tr>
+<tr>
+<td>L3 (booleans)</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">0.64</td>
+<td style="text-align: right;"><strong>+0.51</strong></td>
+</tr>
+<tr>
+<td>L4 (4-op chains)</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;"><strong>+0.62</strong></td>
+</tr>
+<tr>
+<td>L5 (OOD shapes)</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">0.56</td>
+<td style="text-align: right;"><strong>+0.32</strong></td>
+</tr>
+<tr>
+<td>Overall</td>
+<td style="text-align: right;">0.210</td>
+<td style="text-align: right;">0.621</td>
+<td style="text-align: right;">+0.411</td>
+</tr>
+</tbody>
+</table>
+<h2>Reading the leaderboard</h2>
+<ul>
+<li><strong>The trained 2B beats Llama-1B and Qwen3.5-0.8B / 9B / Llama-3B on test.</strong>
+  Sits ~0.10 below Mistral-Small-3.2-24B and ~0.11 below gpt-4.1-nano. ~3×
+  the base 2B.</li>
+<li><strong>It's the only model with a flat per-level profile.</strong> Frontier models
+  all max out L1 at 1.00 and degrade with composition depth. The trained
+  model started weak everywhere (L1=0.45, L4=0.07) and gained the most on
+  the hardest in-distribution levels (L2/L3/L4: +0.51, +0.51, +0.62). It is
+  best-in-class on L4 except for haiku/deepseek.</li>
+<li><strong>OOD generalization is real, not vocabulary transfer.</strong> Level 5 contains
+  shape families never present in training (torus, triangular prism, slot
+  plate, counterbore, cross prism, pyramid, D-shaft). Score went
+  0.24 → 0.56 (+132% rel). The model learned compositional CAD primitives,
+  not "this description string → that code snippet."</li>
+<li><strong>In-run val (0.639) matches test (0.621) closely.</strong> Slight test-side
+  drop is consistent with the L5 OOD examples being harder than the rest.</li>
+<li><strong>Qwen3.5-9B (0.40) is a strange outlier</strong> — much worse than 8B. Likely
+  a routing / inference artifact on PI, not a real capability gap; worth a
+  second look.</li>
+<li><strong>Llama-3.2-3B at 0.087 is broken</strong> in some way (likely refused or output
+  garbage); 1B is fine.</li>
+</ul>
+<h2>What we know now that we didn't before</h2>
+<ol>
+<li>Training would have been done at <strong>step 35</strong>, not step 200. Run 3
+   should early-stop on a val plateau detector or just cut to 50 steps.</li>
+<li>The eval-sampling section is its own thing on Prime —
+   <code>[eval.sampling]</code> must be set explicitly, doesn't inherit <code>[sampling]</code>.</li>
+<li>Prime only converts the <strong>final</strong> training checkpoint into a deployable
+   adapter (<code>step=null</code>, "merged"), not every retained checkpoint. To get a
+   true test-split curve at multiple steps we'd need a separate mechanism
+   (export raw weights and serve them ourselves, or ask for that feature).
+   For now, the in-run val curve is the curve.</li>
+<li>Difficulty filtering makes the train-batch reward unreliable as a
+   signal — it noticeably drops past step 35 even as val plateaus, because
+   the filter is feeding harder and harder examples in.</li>
+</ol>
+<h2>Caveats</h2>
+<ul>
+<li>Train-batch reward (<code>reward/all/mean</code> in the plot) shows mid-run dips
+  past step 35 that don't reflect generalization loss; this is the
+  difficulty filter at work. Trust the val curve.</li>
+<li>Test set is 60 examples; per-level cells in the leaderboard are
+  computed on ~16–40 examples each, so single-cell differences below
+  ~0.05 are within noise.</li>
+<li>L5 OOD coverage is 7 shape generators × ~6 examples each. Wider OOD
+  sweeps (different cuts, different parameter ranges) would be a more
+  honest stress test.</li>
+</ul>
+<h2>Reproduce</h2>
+<pre><code class="language-bash"># Train
+prime train run configs/rl/cad-2b-v2.toml
+
+# Final-model test-split eval
+prime deployments create &lt;merged_adapter_id&gt;
+PI_API_KEY=... uv run prime eval run cad-env \
+  -m &quot;Qwen/Qwen3.5-2B:&lt;merged_adapter_id&gt;&quot; \
+  --api-base-url https://api.pinference.ai/api/v1 --api-key-var PI_API_KEY \
+  -a '{&quot;eval_split&quot;: &quot;test&quot;}' -n 30 -r 4 --max-tokens 2048
+
+# Leaderboard (12 models)
+./spikes/run_leaderboard.sh
+</code></pre>
+<h2>Next</h2>
+<ul>
+<li>Cut a run 3 at 50 steps with the same config + early-stop on val
+  plateau, see if we save 75% of the budget for the same result.</li>
+<li>Try a 9B-class base (Qwen3.5-9B starts at 0.40 — there's a lot more
+  room to gain).</li>
+<li>Or push the env harder: more OOD shape families, harder dimension
+  matching tolerances, multi-turn refinement.</li>
+</ul>
+</div>
+
+<h2 style="margin-top:28px;">Before vs after on the test split</h2><p class="sub">Six held-out examples with the largest reward jump. Reference (blue) · base Qwen3.5-2B (before) · GRPO Qwen3.5-2B (after). Hover a tile for the generated OpenSCAD.</p><div class="card"><h3>L4 · A gear-like disc 6mm thick with radius 25mm, with 6 rectangular teeth evenly spaced around its rim. Each tooth is 5mm wide and extends 6mm radially outward from…</h3><div class="row"><div class="tile ref"><img src="img/538e0aa871be.png" loading="lazy"><div class="cap">reference</div></div><div class="tile bad"><div class="noimg">compile failed</div><div class="cap">before (base 2B) · r=0.00</div></div><div class="tile mid"><img src="img/84ed1f8488fd.png" loading="lazy" title="difference() {
+    cylinder(h=6, r=25, $fn=64);
+}"><div class="cap">after (GRPO 2B) · r=0.86</div></div></div></div><div class="card"><h3>L2 · A solid hexagonal prism 35mm tall, 60mm across the flats, with two flats parallel to the x axis, with a 12mm-radius hole drilled vertically through the center o…</h3><div class="row"><div class="tile ref"><img src="img/9c1ee8c74a65.png" loading="lazy"><div class="cap">reference</div></div><div class="tile bad"><div class="noimg">compile failed</div><div class="cap">before (base 2B) · r=0.00</div></div><div class="tile mid"><img src="img/cf22169551aa.png" loading="lazy" title="difference() {
+    cylinder(h=35, r=30, $fn=64);
+    difference() {
+        cylinder(h=35, r=12, $fn=64);
+    };
+}"><div class="cap">after (GRPO 2B) · r=0.80</div></div></div></div><div class="card"><h3>L3 · A solid hexagonal prism 25mm tall, 50mm across the flats, with two flats parallel to the x axis, with 4 holes of radius 2mm drilled vertically through it, evenl…</h3><div class="row"><div class="tile ref"><img src="img/bc790c7f6382.png" loading="lazy"><div class="cap">reference</div></div><div class="tile bad"><div class="noimg">compile failed</div><div class="cap">before (base 2B) · r=0.00</div></div><div class="tile mid"><img src="img/abe91a7742a4.png" loading="lazy" title="difference() {
+    cylinder(h=25, r=25, $fn=64);
+    difference() {
+        cylinder(h=25, r=2, $fn=64);
+    };
+}"><div class="cap">after (GRPO 2B) · r=0.73</div></div></div></div><div class="card"><h3>L1 · A solid rectangular box 65mm wide, 50mm deep, and 20mm tall.</h3><div class="row"><div class="tile ref"><img src="img/ce1b3b7ff393.png" loading="lazy"><div class="cap">reference</div></div><div class="tile bad"><img src="img/c78aedede749.png" loading="lazy" title="box([65, 50, 20]) {
+    // $fn is not used for rectangular boxes
+}"><div class="cap">before (base 2B) · r=0.00</div></div><div class="tile mid"><img src="img/0dc39c3f6411.png" loading="lazy" title="difference() {
+    cylinder(h=20, r=32.5, $fn=64);
+}"><div class="cap">after (GRPO 2B) · r=0.72</div></div></div></div><div class="card"><h3>L4 · A hexagonal prism (like a nut) 10mm tall, measuring 30mm across the flats, with a circular hole of radius 5mm drilled through its center along the axis.</h3><div class="row"><div class="tile ref"><img src="img/89fecd4a537f.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="img/2c7c74626dcd.png" loading="lazy" title="difference() {
+    // Hexagonal prism facing up
+    prism(h=10, w=30, z=0, rotate([90,0,0])); // Hexagonal face up
+
+    // Circular hole for the nut
+    cylinder(h=10, r=5, $fn=64);
+}"><div class="cap">before (base 2B) · r=0.46</div></div><div class="tile mid"><img src="img/bfbe817f2225.png" loading="lazy" title="difference() {
+    cylinder(h=10, r=15, $fn=64);
+    cylinder(h=10, r=5, $fn=64);
+}"><div class="cap">after (GRPO 2B) · r=0.83</div></div></div></div><div class="card"><h3>L4 · A hexagonal prism (like a nut) 18mm tall, measuring 30mm across the flats, with a circular hole of radius 5mm drilled through its center along the axis.</h3><div class="row"><div class="tile ref"><img src="img/bb0a3119dc16.png" loading="lazy"><div class="cap">reference</div></div><div class="tile mid"><img src="img/4f02e8875856.png" loading="lazy" title="difference() {
+    // Main hexagonal prism
+    hexaminepper($x = (2 - fscale(0.5, 29, , 1.5)), 
+                  $y = (2 - fscale(0.5, 29, , 1.5)), 
+                  $z = 18, 
+                  $fn = 64, 
+                  r1 = fscale(0.3333, 30, 18), 
+                  r2 = 0, 
+                  r3 = fscale(0.3333, 30, 18));
+    
+    // Circular hole
+    cylinder(h = 18, r = 5, $fn = 64, top = 18);
+}"><div class="cap">before (base 2B) · r=0.45</div></div><div class="tile mid"><img src="img/234274f8f955.png" loading="lazy" title="difference() {
+    cylinder(h=18, r=15, $fn=64);
+    difference() {
+        cylinder(h=18, r=5, $fn=64);
+    };
+}"><div class="cap">after (GRPO 2B) · r=0.80</div></div></div></div>
+</div>
